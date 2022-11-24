@@ -1,10 +1,62 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import LoginView from "@/views/LoginView";
+import ChooseRoleView from "@/components/ChooseRoleView";
+import dogWalkerRegisterView from "@/Register/DogWalkerRegisterView";
+import dogOwnerRegisterView from "@/Register/DogOwnerRegisterView";
+import succesfulRegisterView from "@/components/SuccesfulRegisterView";
+import dogOwnerProfileView from "@/profiles/DogOwnerProfileView";
+import dogWalkerProfileView from "@/profiles/DogWalkerProfileView";
+
+
 
 Vue.use(VueRouter)
 
 const routes = [
+
+  {
+    path: '/login',
+    name: 'login',
+    component: LoginView
+
+  },
+  {
+    path: '/owner-profile',
+    name: 'DogOwnerProfileView',
+    component: dogOwnerProfileView
+
+  },
+  {
+    path: '/walker-profile',
+    name: 'DogWalkerProfileView',
+    component: dogWalkerProfileView
+
+  },
+  {
+    path: '/succes',
+    name: 'succesfulRegister',
+    component: succesfulRegisterView
+
+  },
+  {
+    path: '/walker',
+    name: 'dogWalkerRegister',
+    component: dogWalkerRegisterView
+
+  },
+  {
+    path: '/owner',
+    name: 'dogOwnerRegister',
+    component: dogOwnerRegisterView
+
+  },
+  {
+    path: '/chose',
+    name: 'chooseRole',
+    component: ChooseRoleView
+
+  },
   {
     path: '/',
     name: 'home',

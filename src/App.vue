@@ -1,8 +1,11 @@
 <template>
   <div id="app">
     <nav>
+      <router-link to="/Login">Log in</router-link> |
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
+
+
     </nav>
     <router-view/>
   </div>
@@ -18,15 +21,19 @@
 }
 
 nav {
-  padding: 30px;
+  padding: 40px;
 }
 
 nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: #1DB954;
 }
 
 nav a.router-link-exact-active {
   color: #42b983;
 }
 </style>
+<script>export default {
+  components: {}
+}
+</script>
