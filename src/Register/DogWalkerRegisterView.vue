@@ -95,7 +95,7 @@ export default {
 
 <style scoped>
 main {
-background-image: url('~@/assets/labdog.png');
+
 
 }
 

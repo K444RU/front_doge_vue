@@ -81,7 +81,7 @@ export default {
 
 
     navigateToNextPage: function () {
-      if (this.loginResponse.roleType === 'oleg') {
+      if (this.loginResponse.userId === 'oleg') {
         this.navigateToAdmin();
       } else {
         this.navigateToCustomer();

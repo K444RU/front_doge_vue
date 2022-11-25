@@ -2,6 +2,8 @@
   <div>
 
 
+
+
     <div class="col-20">
       <img style="margin-right: 1201px" alt="Vue logo" src="../assets/doglogo.png">
     </div>
@@ -15,6 +17,8 @@
     <div class="row-cols-5">
       <button v-on:click="$router.push('/login')" type="button" class="btn btn-success">Logi sisse!</button>
     </div>
+    <img src="@/assets/labdog.png" width="500" height="500">
+
 
   </div>
 

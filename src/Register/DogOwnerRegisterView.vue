@@ -1,10 +1,11 @@
 <template>
   <div>
+
     <div>
+
       <div class="col-20">
         <img style="margin-right: 1201px" alt="Vue logo" src="../assets/doglogo.png">
       </div>
-
 
       <div>
         <h4 style="margin-right: 720px">
@@ -71,19 +72,20 @@
       <div>
         <h4 style="margin-right: 560px">
           Lisainfo enda kohta
-        </h4 >
+        </h4>
         <div style="margin-left: 330px" class="col-lg-6">
           <textarea class="form-control" aria-label="With textarea"></textarea>
         </div>
         <br>
         <br>
         <div class="row-cols-5">
-          <button  v-on:click="$router.push('/succes')" type="button" class="btn btn-success">Registreeru</button>
+          <button v-on:click="$router.push('/succes')" type="button" class="btn btn-success">Registreeru</button>
         </div>
         <br>
         <br>
       </div>
     </div>
+    <img src="@/assets/curious-dog.png">
   </div>
 </template>
 
@@ -94,5 +96,8 @@ export default {
 </script>
 
 <style scoped>
+main {
+
+}
 
 </style>
