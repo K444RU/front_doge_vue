@@ -93,7 +93,7 @@
 
 <script>
 export default {
-  name: "DogWalkerRegisterView"
+  name: 'DogWalkerRegisterView'
 }
 </script>
 

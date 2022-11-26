@@ -58,14 +58,14 @@ export default {
             }
         ).then(response => {
           this.loginResponse = response.data
-          if (this.loginResponse.roleType === 'vlad') {
+          if (this.loginResponse.roleType === 'oleg') {
             sessionStorage.setItem('userId', this.loginResponse.userId)
             this.$router.push({
-              name: 'DogOwnerProfileView',
+              name: 'DogWalkerProfileView'
             })
           } else {
             this.$router.push({
-              name: 'DogWalkerProfileView', query: {
+              name: 'DogOwnerProfileView', query: {
                 userId: this.loginResponse.userId,
                 roleName: this.loginResponse.roleType
 

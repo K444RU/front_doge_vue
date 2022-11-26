@@ -113,10 +113,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-main {
-
-}
-
-</style>

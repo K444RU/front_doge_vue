@@ -11,15 +11,11 @@
 </template>
 
 <script>
-
-
-
-
 export default {
   name: 'DogOwnerProfileView',
   data: function () {
     return {
-      ownerId: sessionStorage.getItem('userId'),
+
     }
   }
 }

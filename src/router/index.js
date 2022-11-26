@@ -11,6 +11,7 @@ import dogWalkerProfileView from "@/profiles/DogWalkerProfileView";
 
 
 
+
 Vue.use(VueRouter)
 
 const routes = [

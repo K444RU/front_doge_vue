@@ -4,7 +4,7 @@
       <img style="margin-right: 1201px" alt="Vue logo" src="../assets/doglogo.png" >
     </div>
     <h1>
-      Koerahoidja profiil
+      Koerahoidja {{dogWalkerId}} profiil
     </h1>
 
   </div>
@@ -15,7 +15,7 @@ export default {
   name: 'DogWalkerProfileView',
   data: function () {
     return {
-      userId: this.$route.query.userId
+      walker: sessionStorage.getItem('userId')
     }
 
 
