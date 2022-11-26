@@ -1,5 +1,9 @@
 <template>
+  <form @submit.prevent="handleSubmit">
   <div>
+    <h2>
+      Registreeru AnnaKäppa koeraomanikuks
+    </h2>
 
     <div>
 
@@ -87,11 +91,26 @@
     </div>
     <img src="@/assets/curious-dog.png">
   </div>
+  </form>
 </template>
 
 <script>
 export default {
-  name: "DogOwnerRegisterView"
+  name: 'DogOwnerRegisterView',
+  methods: {
+    handleSubmit() {
+      console.log('submitted');
+    }
+  },
+  data () {
+    return {
+      firstname: '',
+      lastname: '',
+      e_mail: '',
+      city: '',
+      adittion_information: ''
+    }
+  }
 }
 </script>
 

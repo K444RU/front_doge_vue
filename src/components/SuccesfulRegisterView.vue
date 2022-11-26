@@ -15,7 +15,7 @@
     <br>
     <br>
     <div class="row-cols-5">
-      <button v-on:click="$router.push('/login')" type="button" class="btn btn-success">Logi sisse!</button>
+      <button v-on:click="$router.push('/')" type="button" class="btn btn-success">Logi sisse!</button>
     </div>
     <img src="@/assets/labdog.png" width="500" height="500">
 

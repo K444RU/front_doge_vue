@@ -1,5 +1,8 @@
 <template>
   <div>
+    <h2>
+      Registreeru AnnaKäppa koerahoidjaks
+    </h2>
     <div>
       <div class="col-20">
         <img style="margin-right: 1201px" alt="Vue logo" src="../assets/doglogo.png">
@@ -84,6 +87,7 @@
         <br>
       </div>
     </div>
+    <img src="@/assets/curious-dog.png">
   </div>
 </template>
 

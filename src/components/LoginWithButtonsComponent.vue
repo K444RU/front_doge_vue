@@ -25,7 +25,7 @@
 </template>
 <script>
 
-import AlerError from "@/components/AlerError";
+import AlerError from "@/components/AlertError";
 
 
 export default {
@@ -99,7 +99,7 @@ export default {
       this.$router.push({
         name: 'DogOwnerProfileView', query: {
           userId: this.loginResponse.userId,
-          roleName: this.loginResponse.roleType
+          roleType: this.loginResponse.roleType
         }
       })
     },

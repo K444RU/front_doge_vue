@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import LoginView from "@/views/LoginView";
+
 import ChooseRoleView from "@/components/ChooseRoleView";
 import dogWalkerRegisterView from "@/Register/DogWalkerRegisterView";
 import dogOwnerRegisterView from "@/Register/DogOwnerRegisterView";
@@ -14,25 +14,20 @@ import dogWalkerProfileView from "@/profiles/DogWalkerProfileView";
 Vue.use(VueRouter)
 
 const routes = [
-
-  {
-    path: '/login',
-    name: 'login',
-    component: LoginView
-
-  },
-  {
-    path: '/owner-profile',
-    name: 'DogOwnerProfileView',
-    component: dogOwnerProfileView
-
-  },
   {
     path: '/walker-profile',
     name: 'DogWalkerProfileView',
     component: dogWalkerProfileView
 
   },
+
+  {
+    path: '/owner-profile',
+    name: 'DogOwnerProfileView',
+    component: dogOwnerProfileView
+
+  },
+
   {
     path: '/succes',
     name: 'succesfulRegister',

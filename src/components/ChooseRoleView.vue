@@ -10,7 +10,7 @@
   <br>
 
   <div class="row-cols-3">
-    <button v-on:click="$router.push('/walker')" type="button" class="btn btn-success">KOERAHOIDJA</button>
+    <button v-on:click="$router.push('/walker')" type="button" class="btn btn-success">KOERAHOIDJA </button>
     <button v-on:click="$router.push('/owner')" type="button" class="btn btn-dark">KOERA OMANIK</button>
   </div>
 </div>
@@ -18,7 +18,7 @@
 
 <script>
 export default {
-  name: "ChooseRoleView"
+  name: 'ChooseRoleView'
 }
 </script>
 

@@ -3,9 +3,10 @@
     {{message}}
   </div>
 </template>
+
 <script>
 export default {
-  name: 'AlerError',
+  name: "AlertErrorMessage",
   props: {
     message: {}
   }
