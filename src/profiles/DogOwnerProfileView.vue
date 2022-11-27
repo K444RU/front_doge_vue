@@ -4,7 +4,10 @@
       <img style="margin-right: 1201px" alt="Vue logo" src="../assets/doglogo.png" >
     </div>
   <h1>
-    Koera omaniku profiil
+    {{firstname}}{{lastname}}
+  </h1>
+  <h1>
+    Koera omaniku profiil{{firstname}}{{lastname}}
   </h1>
 
 </div>
@@ -15,6 +18,8 @@ export default {
   name: 'DogOwnerProfileView',
   data: function () {
     return {
+      ownerId: sessionStorage.getItem('userId'),
+
 
     }
   }

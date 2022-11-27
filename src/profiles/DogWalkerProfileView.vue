@@ -4,7 +4,7 @@
       <img style="margin-right: 1201px" alt="Vue logo" src="../assets/doglogo.png" >
     </div>
     <h1>
-      Koerahoidja {{dogWalkerId}} profiil
+      Koerahoidja profiil
     </h1>
 
   </div>

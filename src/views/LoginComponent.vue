@@ -1,22 +1,23 @@
 <template>
   <div>
-    <h3 style="color: #1DB954">Jätkamiseks Logige sisse</h3>
+
     <AlertErrorMessage :message="errorResponse.message"/>
-    <div class="col-10">
-      <div class="input-group mb-3">
+    <div>
+      <div>
 
         <input v-model="username" type="text" class="form-control" placeholder="Username" aria-label="Kasutajanimi"
                aria-describedby="basic-addon1">
       </div>
-      <div class="input-group mb-3">
+      <div >
         <input v-model="password" type="password" class="form-control" placeholder="Username" aria-label="Parool"
                aria-describedby="basic-addon1">
       </div>
-      <div>
+      <br>
+      <div class="row-cols-1">
         <button v-on:click="login" type="button" class="btn btn-success">Logi sisse</button>
       </div>
-      <div>
-        <button v-on:click="$router.push('/chose')" type="button" class="btn btn-dark">Registreeru</button>
+      <div class="row-cols-1">
+        <button v-on:click="$router.push('/register')" type="button" class="btn btn-dark">Registreeru</button>
       </div>
     </div>
   </div>
@@ -58,7 +59,7 @@ export default {
             }
         ).then(response => {
           this.loginResponse = response.data
-          if (this.loginResponse.roleType === 'oleg') {
+          if (this.loginResponse.roleType === 'walker') {
             sessionStorage.setItem('userId', this.loginResponse.userId)
             this.$router.push({
               name: 'DogWalkerProfileView'

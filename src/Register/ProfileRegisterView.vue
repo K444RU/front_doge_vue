@@ -1,14 +1,14 @@
 <template>
-  <div>
-    <h2>
-      Registreeru AnnaKäppa koerahoidjaks
-    </h2>
+  <form>
+    <div class="col-20">
+      <img style="margin-right: 1201px" src="@/assets/doglogo.png">
+    </div>
     <div>
-      <div class="col-20">
-        <img style="margin-right: 1201px" alt="Vue logo" src="../assets/doglogo.png">
-      </div>
-
-      
+    <h1>
+      Registreeru Annakäppa kasutajaks
+    </h1>
+    </div>
+    <div>
       <div>
         <h4 style="margin-right: 720px">
           Nimi
@@ -70,37 +70,52 @@
           <input type="text" class="form-control" placeholder="nimi" aria-label="Username"
                  aria-describedby="basic-addon1">
         </div>
+        <div>
+          <h4 style="margin-right: 350px">
+            Valige roll, mida soovite registreeruda
+          </h4>
+          <div class="btn-group" style="margin-right: 650px">
+            <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              Valige Roll
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">AnnaKäppa Koera omanik</a></li>
+              <li><a class="dropdown-item" href="#">AnnaKäppa Koerahoidja</a></li>
+            </ul>
+          </div>
+        </div>
+        <br>
+
       </div>
+      <div></div>
       <div>
         <h4 style="margin-right: 560px">
           Lisainfo enda kohta
-        </h4 >
+        </h4>
         <div style="margin-left: 330px" class="col-lg-6">
           <textarea class="form-control" aria-label="With textarea"></textarea>
         </div>
         <br>
         <br>
         <div class="row-cols-5">
-        <button v-on:click="$router.push('/succes')" type="button" class="btn btn-success">Registreeru</button>
+          <button v-on:click="$router.push('/succes')" type="button" class="btn btn-success">Registreeru</button>
         </div>
         <br>
         <br>
       </div>
     </div>
+    <div>
     <img src="@/assets/curious-dog.png">
-  </div>
+    </div>
+
+
+  </form>
+
 </template>
 
 <script>
 export default {
-  name: 'DogWalkerRegisterView'
+  name: 'ProfileRegisterView'
 }
 </script>
 
-<style scoped>
-main {
-
-
-}
-
-</style>

@@ -3,11 +3,11 @@ import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 
 import ChooseRoleView from "@/components/ChooseRoleView";
-import dogWalkerRegisterView from "@/Register/DogWalkerRegisterView";
-import dogOwnerRegisterView from "@/Register/DogOwnerRegisterView";
 import succesfulRegisterView from "@/components/SuccesfulRegisterView";
 import dogOwnerProfileView from "@/profiles/DogOwnerProfileView";
 import dogWalkerProfileView from "@/profiles/DogWalkerProfileView";
+import profileRegisterView from "@/Register/ProfileRegisterView";
+import DogRegisterView from "@/Register/DogRegisterView";
 
 
 
@@ -15,6 +15,18 @@ import dogWalkerProfileView from "@/profiles/DogWalkerProfileView";
 Vue.use(VueRouter)
 
 const routes = [
+  {
+    path: '/dog/register',
+    name: 'DogRegisterView',
+    component: DogRegisterView
+
+  },
+  {
+    path: '/register',
+    name: 'profileRegisterView',
+    component: profileRegisterView
+
+  },
   {
     path: '/walker-profile',
     name: 'DogWalkerProfileView',
@@ -35,18 +47,7 @@ const routes = [
     component: succesfulRegisterView
 
   },
-  {
-    path: '/walker',
-    name: 'dogWalkerRegister',
-    component: dogWalkerRegisterView
 
-  },
-  {
-    path: '/owner',
-    name: 'dogOwnerRegister',
-    component: dogOwnerRegisterView
-
-  },
   {
     path: '/chose',
     name: 'chooseRole',
