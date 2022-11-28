@@ -3,12 +3,11 @@
     <div class="home">
       <img style="margin-right: 1201px" alt="Vue logo" src="../assets/doglogo.png" >
     </div>
+
   <h1>
-    {{firstname}}{{lastname}}
+    Koera omaniku profiil
   </h1>
-  <h1>
-    Koera omaniku profiil{{firstname}}{{lastname}}
-  </h1>
+
 
 </div>
 </template>
@@ -19,6 +18,8 @@ export default {
   data: function () {
     return {
       ownerId: sessionStorage.getItem('userId'),
+
+
 
 
     }

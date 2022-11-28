@@ -29,7 +29,7 @@ const routes = [
   },
   {
     path: '/walker-profile',
-    name: 'DogWalkerProfileView',
+    name: 'DogWalkerProfileRoute',
     component: dogWalkerProfileView
 
   },

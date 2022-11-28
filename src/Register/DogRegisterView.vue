@@ -11,29 +11,25 @@
         <h4 style="margin-right: 650px">
           Koera Tõug
         </h4>
-        <div class="col-6" style="margin-left: 330px">
-          <select v-on:change="clickSelectDogBreed()" v-model="selectDogBreed" class="form-select row-cols-5"
-                  aria-label="Default select example">
-            <option selected disabled value="0">--Koera tõug--</option>
-            <option value="1">One</option>
-          </select>
-        </div>
+        <BreedsDropDown/>
       </div>
-      <div>
+      <div >
         <h4 style="margin-right: 660px">
           Koera nimi
         </h4>
         <div style="margin-left: 330px" class="col-lg-6">
-          <input type="text" class="form-control" placeholder="nimi" aria-label="Username"
+          <input v-model="dogRequest.dogName" type="text" class="form-control" placeholder="Nimi" aria-label="Username"
                  aria-describedby="basic-addon1">
         </div>
+
+
       </div>
       <div>
         <h4 style="margin-right: 650px">
           Koera vanus
         </h4>
         <div style="margin-left: 330px" class="col-lg-6">
-          <input type="text" class="form-control" placeholder="nimi" aria-label="Username"
+          <input v-model="dogRequest.dogAge" type="text" class="form-control" placeholder="Vanus" aria-label="Username"
                  aria-describedby="basic-addon1">
         </div>
       </div>
@@ -42,9 +38,9 @@
           Koera suurus
         </h4>
         <div class="col-6" style="margin-left: 330px">
-          <select class="form-select row-cols-5" aria-label="Default select example">
+          <select v-model="dogRequest.dogSize" class="form-select row-cols-5" aria-label="Default select example">
             <option selected disabled value="0">--Koera suurus--</option>
-            <option value="1">One</option>
+            <option v-for="size in sizes" :value="size.type">{{ size.type }}</option>
           </select>
         </div>
       </div>
@@ -54,7 +50,7 @@
           Lisainfo, mida koera hoidja peaks teadma
         </h4>
         <div style="margin-left: 330px" class="col-lg-6">
-          <textarea class="form-control" aria-label="With textarea"></textarea>
+          <textarea v-model="dogRequest.dogAdditionalInfo" class="form-control" aria-label="With textarea"></textarea>
         </div>
         <br>
         <br>
@@ -73,24 +69,48 @@
 </template>
 
 <script>
+import BreedsDropDown from "@/components/BreedsDropDown";
+
 export default {
   name: 'DogRegisterView',
+  components: {BreedsDropDown},
   data: function () {
     return {
+      dogRequest: {
+        dogName: '',
+        dogAge: 0,
+        dogSize: '',
+        dogAdditionalInfo: ''
 
 
-      selectDogBreed: 0,
 
-      methods: {
-        clickSelectDogBreed: function () {
-          this.$emit('clickSelectDogBreed', this.selectDogBreed)
+      },
+
+      sizes: [
+        {
+          type: '',
+          id: '',
+          price: ''
         }
-      }
+      ]
     }
+  },
+  methods: {
+    getDogSizesInfo: function () {
+      console.log('olen siin 1')
+      this.$http.get("/dog/size")
+          .then(result => {
+            this.sizes = result.data
+          })
+          .catch(error => {
+            console.log(error)
+          })
+    },
+  },
+  beforeMount() {
+    this.getDogSizesInfo()
+
   }
 }
 </script>
 
-<style scoped>
-
-</style>

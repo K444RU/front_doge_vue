@@ -62,7 +62,7 @@ export default {
           if (this.loginResponse.roleType === 'walker') {
             sessionStorage.setItem('userId', this.loginResponse.userId)
             this.$router.push({
-              name: 'DogWalkerProfileView'
+              name: 'DogWalkerProfileRoute'
             })
           } else {
             this.$router.push({
