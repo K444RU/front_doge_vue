@@ -215,7 +215,7 @@ export default {
   },
   beforeMount() {
     this.roleTypeSelect()
-    this.registerNewUser()
+
   }
 
 }
