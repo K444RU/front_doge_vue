@@ -61,7 +61,7 @@
           Parool
         </h4>
         <div style="margin-left: 330px" class="col-lg-6">
-          <input v-model="userRequest.password" type="password" class="form-control" placeholder="password" aria-label="Username"
+          <input v-model="userRequest.password" type="password" class="form-control" placeholder="parool" aria-label="Username"
                  aria-describedby="basic-addon1">
         </div>
       </div>
@@ -70,7 +70,7 @@
           Korda parool
         </h4>
         <div style="margin-left: 330px" class="col-lg-6">
-          <input v-model="userRequest.passwordRepeat" type="password" class="form-control" placeholder="nimi" aria-label="Username"
+          <input v-model="userRequest.passwordRepeat" type="password" class="form-control" placeholder="korda parool" aria-label="Username"
                  aria-describedby="basic-addon1">
         </div>
         <div style="margin-left: 330px" class="col-lg-6">
@@ -84,7 +84,7 @@
           <div class="col-6" style="margin-left: 330px">
             <select v-model="userRequest.type" class="form-select" aria-label="Default select example">
               <option selected disabled value="0">--Roll--</option>
-              <option v-for="chooseTheType in types" :value="chooseTheType.id">{{ chooseTheType.type }}</option>
+              <option v-for="chooseTheType in types" :value="chooseTheType.roleId">{{ chooseTheType.roleType }}</option>
             </select>
           </div>
 
@@ -128,8 +128,8 @@ export default {
     return {
       types: [
         {
-          id: '',
-          type: ''
+          roleId: '',
+          roleType: ''
         }
       ],
       errorResponse: {
@@ -188,7 +188,7 @@ export default {
     },
 
     navigateToSelectedRolePage: function () {
-      if (this.userResponse.roleType === 'walker') {
+      if (this.userResponse.roleId === 1) {
         this.navigateToWalkerPage();
       } else {
         this.navigateToOwnerPage();
@@ -197,7 +197,7 @@ export default {
 
     registerNewUser: function () {
       this.errorResponse.message = ''
-      if (this.password !== this.passwordRepeat) {
+      if (this.userRequest.password !== this.userRequest.passwordRepeat) {
         this.errorResponse.message = 'Parool ei klappi'
       } else {
         this.$http.post("/register",this.userRequest

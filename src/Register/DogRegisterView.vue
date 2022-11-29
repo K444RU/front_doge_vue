@@ -7,13 +7,13 @@
       Lisa Koer
     </h1>
     <div>
-      <div>
+      <div >
         <h4 style="margin-right: 650px">
           Koera Tõug
         </h4>
-        <BreedsDropDown/>
+        <BreedsDropDown v-model="dogRequest.breedSelect"/>
       </div>
-      <div >
+      <div>
         <h4 style="margin-right: 660px">
           Koera nimi
         </h4>
@@ -39,8 +39,8 @@
         </h4>
         <div class="col-6" style="margin-left: 330px">
           <select v-model="dogRequest.dogSize" class="form-select row-cols-5" aria-label="Default select example">
-            <option selected disabled value="0">--Koera suurus--</option>
-            <option v-for="size in sizes" :value="size.type">{{ size.type }}</option>
+            <option selected disabled value="0">--koera suurus--</option>
+            <option v-for="size in sizes" :value="size.sizeId">{{ size.sizeType }}</option>
           </select>
         </div>
       </div>
@@ -55,7 +55,7 @@
         <br>
         <br>
         <div class="row-cols-5">
-          <button v-on:click="$router.push('/owner-profile')" type="button" class="btn btn-success">Registreeru</button>
+          <button v-on:click="registerNewDog" type="button" class="btn btn-success">Registreeru</button>
         </div>
         <br>
         <br>
@@ -77,20 +77,23 @@ export default {
   data: function () {
     return {
       dogRequest: {
+        breedSelect: '',
         dogName: '',
         dogAge: 0,
         dogSize: '',
         dogAdditionalInfo: ''
+      },
 
-
-
+      errorResponse: {
+        message: '',
+        errorCode: 0
       },
 
       sizes: [
         {
-          type: '',
-          id: '',
-          price: ''
+          sizeType: '',
+          sizeId: '',
+          sizePrice: ''
         }
       ]
     }
@@ -105,6 +108,24 @@ export default {
           .catch(error => {
             console.log(error)
           })
+    },
+    registerNewDog: function () {
+      this.errorResponse.message = ''
+      if (this.dogRequest.dogName === 0 || this.dogRequest.dogAge === 0) {
+        this.errorResponse.message = 'Täida kõik väljed'
+      } else {
+        this.$http.post("/dog/registration", this.dogRequest
+        ).then(response => {
+          this.dogRequest = response.data
+          this.$router.push({
+            name: 'DogRegisterView'
+          })
+        })
+            .catch(error => {
+              console.log(error)
+            })
+      }
+
     },
   },
   beforeMount() {

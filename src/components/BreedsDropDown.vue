@@ -1,8 +1,8 @@
 <template>
   <div class="col-6" style="margin-left: 330px">
-    <select v-model="selectedBreedID" class="form-select row-cols-5" aria-label="Default select example">
+    <select  class="form-select row-cols-5" aria-label="Default select example">
       <option selected disabled value="0">--Koera tõug--</option>
-      <option v-for="breed in breeds" :value="breed.name">{{ breed.name }}</option>
+      <option v-for="breed in breeds" :value="breed.breedId">{{ breed.breedName }}</option>
     </select>
   </div>
 </template>
@@ -11,11 +11,13 @@ export default {
   name: 'BreedsDropDown',
   data: function () {
     return {
-      selectedBreedID: 0,
+      // // dogRequest: {
+      // //   breedSelect: 0
+      // },
       breeds: [
         {
-          id: '',
-          name: 0
+          breedId: '',
+          breedName: 0
         }
       ]
     }
