@@ -82,7 +82,7 @@
             Valige roll, mida soovite registreeruda
           </h4>
           <div class="col-6" style="margin-left: 330px">
-            <select v-model="userRequest.type" class="form-select" aria-label="Default select example">
+            <select v-model="userRequest.roleId" class="form-select" aria-label="Default select example">
               <option selected disabled value="0">--Roll--</option>
               <option v-for="chooseTheType in types" :value="chooseTheType.roleId">{{ chooseTheType.roleType }}</option>
             </select>
@@ -144,7 +144,7 @@ export default {
         username: '',
         password: '',
         passwordRepeat: '',
-        type: '',
+        roleId: 0,
         additionalInformation: ''
       },
       userResponse: {
@@ -172,6 +172,9 @@ export default {
 
     navigateToWalkerPage: function () {
       sessionStorage.setItem('userId', this.userResponse.userId)
+
+
+
       this.$router.push({
         name: 'DogWalkerProfileRoute'
       })
@@ -188,7 +191,7 @@ export default {
     },
 
     navigateToSelectedRolePage: function () {
-      if (this.userResponse.roleId === 1) {
+      if (this.userResponse.roleType === 'walker') {
         this.navigateToWalkerPage();
       } else {
         this.navigateToOwnerPage();

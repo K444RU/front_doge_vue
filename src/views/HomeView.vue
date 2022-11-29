@@ -1,7 +1,7 @@
 <template id="login-form">
   <div class="home">
-    <div class="justify-content-start col-2 row">
-      <img src="@/assets/doglogo.png">
+    <div  class="justify-content-start col-2 row MyLogo">
+      <img  src="@/assets/doglogo.png" class="MyLogo">
     </div>
 
     <div class="row">

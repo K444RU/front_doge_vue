@@ -7,11 +7,20 @@
       Lisa Koer
     </h1>
     <div>
-      <div >
+      <div>
         <h4 style="margin-right: 650px">
           Koera Tõug
         </h4>
-        <BreedsDropDown v-model="dogRequest.breedSelect"/>
+        <!--        <BreedsDropDown v-model="dogRequest.breedId"/>-->
+
+        <div class="col-6" style="margin-left: 330px">
+          <select v-model="dogRequest.breedId" class="form-select row-cols-5" aria-label="Default select example">
+            <option selected disabled value="0">--Koera tõug--</option>
+            <option v-for="breed in breeds" :value="breed.breedId">{{ breed.breedName }}</option>
+          </select>
+        </div>
+
+
       </div>
       <div>
         <h4 style="margin-right: 660px">
@@ -73,32 +82,54 @@ import BreedsDropDown from "@/components/BreedsDropDown";
 
 export default {
   name: 'DogRegisterView',
-  components: {BreedsDropDown},
+  // components: {BreedsDropDown},
   data: function () {
     return {
       dogRequest: {
-        breedSelect: '',
+
         dogName: '',
         dogAge: 0,
         dogSize: '',
-        dogAdditionalInfo: ''
+        dogAdditionalInfo: '',
+
       },
 
       errorResponse: {
         message: '',
         errorCode: 0
       },
+      breeds:
+          {
+            breedId: '',
+            breedName: 0
+          },
 
-      sizes: [
-        {
-          sizeType: '',
-          sizeId: '',
-          sizePrice: ''
-        }
-      ]
+      sizes:
+          {
+            sizeType: '',
+            sizeId: '',
+            sizePrice: ''
+          },
+      userResponse: {
+        userId: 0,
+        roleId: 0,
+        roleType: ''
+      }
+
     }
   },
   methods: {
+    getBreedsSelectInfo: function () {
+      console.log('olen siin')
+      this.$http.get("/dog/bread")
+          .then(result => {
+            this.breeds = result.data
+          })
+          .catch(error => {
+            console.log(error)
+          });
+    },
+
     getDogSizesInfo: function () {
       console.log('olen siin 1')
       this.$http.get("/dog/size")
@@ -118,7 +149,7 @@ export default {
         ).then(response => {
           this.dogRequest = response.data
           this.$router.push({
-            name: 'DogRegisterView'
+            name: 'DogOwnerProfileView'
           })
         })
             .catch(error => {
@@ -130,6 +161,7 @@ export default {
   },
   beforeMount() {
     this.getDogSizesInfo()
+    this.getBreedsSelectInfo()
 
   }
 }
