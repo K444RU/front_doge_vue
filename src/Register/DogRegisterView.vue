@@ -38,7 +38,7 @@
           Koera vanus
         </h4>
         <div style="margin-left: 330px" class="col-lg-6">
-          <input v-model="dogRequest.dogAge" type="text" class="form-control" placeholder="Vanus" aria-label="Username"
+          <input  v-model="dogRequest.dogAge" type="number" class="form-control" placeholder="Vanus" aria-label="Username"
                  aria-describedby="basic-addon1">
         </div>
       </div>
@@ -88,8 +88,8 @@ export default {
       dogRequest: {
         userId: Number( sessionStorage.getItem('userId')),
         dogName: '',
-        dogAge: 0,
         sizeId: '',
+        dogAge: '',
         dogAdditionalInformation: '',
         dogPhoto: 'ZAREGISTRIRUI PSA PAZHALASTA'
 
@@ -142,11 +142,11 @@ export default {
           })
     },
     registerNewDog: function () {
-      alert(JSON.stringify(this.dogRequest))
       this.errorResponse.message = ''
       if (this.dogRequest.dogName === 0 || this.dogRequest.dogAge === 0) {
         this.errorResponse.message = 'Täida kõik väljed'
       } else {
+        this.dogRequest.dogAge = Number(this.dogRequest.dogAge)
         this.$http.post("/dog/registration", this.dogRequest
         ).then(response => {
           this.$router.push({
