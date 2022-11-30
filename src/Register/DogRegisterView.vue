@@ -7,18 +7,18 @@
       Lisa Koer
     </h1>
     <div class="row-cols-lg-8">
-      <ImageInput @pictureInputSuccess="setPicture" />
+      <ImageInput @pictureInputSuccess="setPicture"/>
     </div>
-<!--    <div class="row-cols-4">-->
-<!--      <button v-on:click="addPicture" type="button" class="btn btn-success">Salvesta pilt</button>-->
-<!--    </div>-->
+    <!--    <div class="row-cols-4">-->
+    <!--      <button v-on:click="addPicture" type="button" class="btn btn-success">Salvesta pilt</button>-->
+    <!--    </div>-->
     <div>
-    <div v-if="dogRequest.dogPhoto === null">
-      <img src="../assets/deafult1.jpeg" >
-    </div>
-    <div v-else>
-      <img :src="dogRequest.dogPhoto" style="height: 200px">
-    </div>
+      <div v-if="dogRequest.dogPhoto === null">
+        <img src="../assets/deafult1.jpeg">
+      </div>
+      <div v-else>
+        <img :src="dogRequest.dogPhoto" style="height: 200px">
+      </div>
     </div>
 
     <br>
@@ -149,17 +149,6 @@ export default {
     }
   },
   methods: {
-
-    // addPicture: function () {
-    //   this.dogRequest.userId = this.userId
-    //   this.$http.post("/dog/registration", this.dogRequest
-    //   ).then(response => {
-    //     this.setPicture()
-    //   }).catch(error => {
-    //     console.log(error)
-    //   })
-    // },
-
 
 
     setPicture: function (picture) {
