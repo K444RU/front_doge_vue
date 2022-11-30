@@ -9,7 +9,7 @@
 
     <div class="col-lg-2">
       <h2></h2>
-      <img style="height: 250px" src="../assets/deafult1.jpeg"/>
+      <img class="test" style="height: 250px" src="../assets/deafult1.jpeg"/>
       <div class="row-cols-1">
         <button type="button" class="btn btn-success">Salvesta pilt</button>
       </div>

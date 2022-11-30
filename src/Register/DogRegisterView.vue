@@ -47,7 +47,7 @@
           Koera suurus
         </h4>
         <div class="col-6" style="margin-left: 330px">
-          <select v-model="dogRequest.dogSize" class="form-select row-cols-5" aria-label="Default select example">
+          <select v-model="dogRequest.sizeId" class="form-select row-cols-5" aria-label="Default select example">
             <option selected disabled value="0">--koera suurus--</option>
             <option v-for="size in sizes" :value="size.sizeId">{{ size.sizeType }}</option>
           </select>
@@ -86,7 +86,7 @@ export default {
   data: function () {
     return {
       dogRequest: {
-
+        userId: Number( sessionStorage.getItem('userId')),
         dogName: '',
         dogAge: 0,
         dogSize: '',
@@ -141,13 +141,13 @@ export default {
           })
     },
     registerNewDog: function () {
+      alert(JSON.stringify(this.dogRequest))
       this.errorResponse.message = ''
       if (this.dogRequest.dogName === 0 || this.dogRequest.dogAge === 0) {
         this.errorResponse.message = 'Täida kõik väljed'
       } else {
         this.$http.post("/dog/registration", this.dogRequest
         ).then(response => {
-          this.dogRequest = response.data
           this.$router.push({
             name: 'DogOwnerProfileView'
           })
