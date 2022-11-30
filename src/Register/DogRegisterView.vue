@@ -89,7 +89,7 @@ export default {
         userId: Number( sessionStorage.getItem('userId')),
         dogName: '',
         dogAge: 0,
-        dogSize: '',
+        sizeId: '',
         dogAdditionalInfo: '',
 
       },
