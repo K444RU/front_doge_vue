@@ -1,20 +1,36 @@
 <template>
-  <div>
+  <div class="row">
     <div class="col-20">
       <img style="margin-right: 1201px" src="@/assets/doglogo.png">
     </div>
     <h1>
       Lisa Koer
     </h1>
+    <div class="row-cols-lg-8">
+      <ImageInput @pictureInputSuccess="setPicture" />
+    </div>
+<!--    <div class="row-cols-4">-->
+<!--      <button v-on:click="addPicture" type="button" class="btn btn-success">Salvesta pilt</button>-->
+<!--    </div>-->
     <div>
-      <div>
-        <h4 style="margin-right: 650px">
+    <div v-if="dogRequest.dogPhoto === null">
+      <img src="../assets/deafult1.jpeg" >
+    </div>
+    <div v-else>
+      <img :src="dogRequest.dogPhoto" style="height: 200px">
+    </div>
+    </div>
+
+    <br>
+    <div>
+      <div class="col-lg-8">
+        <h4>
           Koera Tõug
         </h4>
         <!--        <BreedsDropDown v-model="dogRequest.breedId"/>-->
 
-        <div class="col-6" style="margin-left: 330px">
-          <select v-model="dogRequest.breedId" class="form-select row-cols-5" aria-label="Default select example">
+        <div style="margin-left: 300px" class="col-lg-6">
+          <select v-model="dogRequest.breedId" class="form-select" aria-label="Default select example">
             <option selected disabled value="0">--Koera tõug--</option>
             <option v-for="breed in breeds" :value="breed.breedId">{{ breed.breedName }}</option>
           </select>
@@ -22,8 +38,8 @@
 
 
       </div>
-      <div>
-        <h4 style="margin-right: 660px">
+      <div class="col-lg-8">
+        <h4>
           Koera nimi
         </h4>
         <div style="margin-left: 330px" class="col-lg-6">
@@ -33,17 +49,18 @@
 
 
       </div>
-      <div>
-        <h4 style="margin-right: 650px">
+      <div class="col-lg-8">
+        <h4>
           Koera vanus
         </h4>
         <div style="margin-left: 330px" class="col-lg-6">
-          <input  v-model="dogRequest.dogAge" type="number" class="form-control" placeholder="Vanus" aria-label="Username"
+          <input v-model="dogRequest.dogAge" type="number" class="form-control" placeholder="Vanus"
+                 aria-label="Username"
                  aria-describedby="basic-addon1">
         </div>
       </div>
-      <div>
-        <h4 style="margin-right: 645px">
+      <div class="col-lg-8">
+        <h4>
           Koera suurus
         </h4>
         <div class="col-6" style="margin-left: 330px">
@@ -54,12 +71,13 @@
         </div>
       </div>
 
-      <div>
-        <h4 style="margin-right: 335px">
+      <div class="row col-lg-9">
+        <h4>
           Lisainfo, mida koera hoidja peaks teadma
         </h4>
         <div style="margin-left: 330px" class="col-lg-6">
-          <textarea v-model="dogRequest.dogAdditionalInformation" class="form-control" aria-label="With textarea"></textarea>
+          <textarea v-model="dogRequest.dogAdditionalInformation" class="form-control"
+                    aria-label="With textarea"></textarea>
         </div>
         <br>
         <br>
@@ -79,20 +97,23 @@
 
 <script>
 import BreedsDropDown from "@/components/BreedsDropDown";
+import ImageInput from "@/components/image/ImageInput";
 
 export default {
   name: 'DogRegisterView',
+  components: {ImageInput},
+
   // components: {BreedsDropDown},
   data: function () {
     return {
+
       dogRequest: {
-        userId: Number( sessionStorage.getItem('userId')),
+        userId: Number(sessionStorage.getItem('userId')),
         dogName: '',
         sizeId: '',
         dogAge: '',
         dogAdditionalInformation: '',
-        dogPhoto: 'ZAREGISTRIRUI PSA PAZHALASTA'
-
+        dogPhoto: ''
       },
 
       errorResponse: {
@@ -115,11 +136,38 @@ export default {
         userId: 0,
         roleId: 0,
         roleType: ''
+      },
+      pictureRequest: {
+        userId: 0,
+        pictureData: ''
+      },
+      pictureResponse: {
+        userId: 0,
+        pictureData: ''
       }
 
     }
   },
   methods: {
+
+    // addPicture: function () {
+    //   this.dogRequest.userId = this.userId
+    //   this.$http.post("/dog/registration", this.dogRequest
+    //   ).then(response => {
+    //     this.setPicture()
+    //   }).catch(error => {
+    //     console.log(error)
+    //   })
+    // },
+
+
+
+    setPicture: function (picture) {
+      this.dogRequest.dogPhoto = picture;
+
+    },
+
+
     getBreedsSelectInfo: function () {
       console.log('olen siin')
       this.$http.get("/dog/bread")
@@ -147,6 +195,7 @@ export default {
         this.errorResponse.message = 'Täida kõik väljed'
       } else {
         this.dogRequest.dogAge = Number(this.dogRequest.dogAge)
+
         this.$http.post("/dog/registration", this.dogRequest
         ).then(response => {
           this.$router.push({
@@ -157,6 +206,7 @@ export default {
               console.log(error)
             })
       }
+
 
     },
   },

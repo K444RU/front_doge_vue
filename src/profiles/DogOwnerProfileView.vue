@@ -5,7 +5,7 @@
     </div>
 
 
-    <h1>Koera omaniku profiil</h1>
+    <h1>Koera omaniku profiil {{userId}}</h1>
 
     <div class="col-lg-2">
       <h2></h2>
@@ -24,7 +24,7 @@
       </h5>
     </div>
     <div class="col-lg-4">
-      <h2>Minu Koerad<button type="button" class="btn btn-success">Lisa koer</button></h2>
+      <h2>Minu Koerad<button v-on:click="$router.push('/dog/register')" type="button" class="btn btn-success">Lisa koer</button></h2>
       <table class="table table-success table-striped">
         <thead>
         <tr>
@@ -75,11 +75,16 @@
 </template>
 
 <script>
+
+import ProfileRegisterView from "@/Register/ProfileRegisterView";
+
+
 export default {
   name: 'DogOwnerProfileView',
+  components: {ProfileRegisterView},
   data: function () {
     return {
-      ownerId: sessionStorage.getItem('userId'),
+      userId: sessionStorage.getItem('userId'),
 
 
     }

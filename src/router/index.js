@@ -8,6 +8,7 @@ import dogOwnerProfileView from "@/profiles/DogOwnerProfileView";
 import dogWalkerProfileView from "@/profiles/DogWalkerProfileView";
 import profileRegisterView from "@/Register/ProfileRegisterView";
 import DogRegisterView from "@/Register/DogRegisterView";
+import testview from "@/views/testview";
 
 
 
@@ -19,6 +20,12 @@ const routes = [
     path: '/dog/register',
     name: 'DogRegisterView',
     component: DogRegisterView
+
+  },
+  {
+    path: '/test',
+    name: 'testview',
+    component: testview
 
   },
   {

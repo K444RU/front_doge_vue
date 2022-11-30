@@ -150,7 +150,6 @@ export default {
       userResponse: {
         userId: 0,
         roleId: 0,
-        roleType: ''
       }
       
 
@@ -171,7 +170,7 @@ export default {
 
 
     navigateToWalkerPage: function () {
-      sessionStorage.setItem('userId', this.userResponse.userId)
+
 
 
 
@@ -184,13 +183,13 @@ export default {
       this.$router.push({
         name: 'DogOwnerProfileView', query: {
           userId: this.userResponse.userId,
-          roleName: this.userResponse.roleType
 
         }
       })
     },
 
     navigateToSelectedRolePage: function () {
+      sessionStorage.setItem('userId', this.userResponse.userId)
       if (this.userResponse.roleId === 1) {
         this.navigateToWalkerPage();
       } else {
