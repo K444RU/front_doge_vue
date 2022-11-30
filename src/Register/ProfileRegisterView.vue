@@ -191,7 +191,7 @@ export default {
     },
 
     navigateToSelectedRolePage: function () {
-      if (this.userResponse.roleType === 'walker') {
+      if (this.userResponse.roleId === 1) {
         this.navigateToWalkerPage();
       } else {
         this.navigateToOwnerPage();

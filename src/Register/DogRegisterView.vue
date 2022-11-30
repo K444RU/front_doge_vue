@@ -59,7 +59,7 @@
           Lisainfo, mida koera hoidja peaks teadma
         </h4>
         <div style="margin-left: 330px" class="col-lg-6">
-          <textarea v-model="dogRequest.dogAdditionalInfo" class="form-control" aria-label="With textarea"></textarea>
+          <textarea v-model="dogRequest.dogAdditionalInformation" class="form-control" aria-label="With textarea"></textarea>
         </div>
         <br>
         <br>
@@ -90,7 +90,8 @@ export default {
         dogName: '',
         dogAge: 0,
         sizeId: '',
-        dogAdditionalInfo: '',
+        dogAdditionalInformation: '',
+        dogPhoto: 'ZAREGISTRIRUI PSA PAZHALASTA'
 
       },
 
