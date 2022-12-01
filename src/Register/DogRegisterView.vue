@@ -144,7 +144,8 @@ export default {
       pictureResponse: {
         userId: 0,
         pictureData: ''
-      }
+      },
+
 
     }
   },
@@ -162,6 +163,8 @@ export default {
 
 
 
+
+
     setPicture: function (picture) {
       this.dogRequest.dogPhoto = picture;
 
@@ -169,7 +172,6 @@ export default {
 
 
     getBreedsSelectInfo: function () {
-      console.log('olen siin')
       this.$http.get("/dog/bread")
           .then(result => {
             this.breeds = result.data

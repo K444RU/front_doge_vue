@@ -9,6 +9,7 @@ import dogWalkerProfileView from "@/profiles/DogWalkerProfileView";
 import profileRegisterView from "@/Register/ProfileRegisterView";
 import DogRegisterView from "@/Register/DogRegisterView";
 import testview from "@/views/testview";
+import FindDogWalkerPageView from "@/views/FindDogWalkerPageView";
 
 
 
@@ -16,6 +17,12 @@ import testview from "@/views/testview";
 Vue.use(VueRouter)
 
 const routes = [
+  {
+    path: '/find/dogwalker',
+    name: 'FindDogWalkerPageRoute',
+    component: FindDogWalkerPageView
+
+  },
   {
     path: '/dog/register',
     name: 'DogRegisterView',
