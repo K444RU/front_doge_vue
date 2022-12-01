@@ -10,12 +10,14 @@
       <h1>Koera omaniku profiil {{userId}} </h1>
 
 
+
     <div class="col-lg-2">
-      <div v-if="pictureResponse.photoData === null">
-        <img class="test" style="height: 250px" src="../assets/deafult1.jpeg"/>
+      <div v-if="ownerResponse.userPhoto.length > 0">
+        <h1>hello</h1>
+        <img :src="ownerResponse.userPhoto" style="height: 200px">
       </div>
       <div v-else>
-        <img :src="pictureResponse.photoData" style="height: 2px">
+        <img class="test" style="height: 250px" src="../assets/deafult1.jpeg"/>
       </div>
 
 
@@ -25,7 +27,7 @@
 
 
     <div  class="col-lg-4">
-      <h2 > {{ firstname }} perekonnanimi</h2>
+      <h2 > {{ ownerResponse.firstname }} {{ ownerResponse.lastname }}</h2>
       <h5>
         Siia alla tuleb lisainfo registratsioonist
 
@@ -92,19 +94,19 @@ export default {
 
   data: function () {
     return {
-      userId: sessionStorage.getItem('userId'),
+      userId: Number(sessionStorage.getItem('userId')),
 
 
       pictureRequest: {
         userId: 0,
-        photoData: ''
+        photoData: '',
+
       },
       pictureResponse: {
         userId: 0,
-        photoData: ''
+        photoData: null
       },
-      ownerRequest: {
-        userId: 0,
+      ownerResponse: {
         firstname: '',
         lastname: '',
         additionalInformation: null,
@@ -115,23 +117,19 @@ export default {
   },
   methods: {
 
-    // getOwnerRegisteredInfo: function () {
-    //   this.$http.get("/user/owner", {
-    //         params: {
-    //           userId: this.userId,
-    //           firstname: this.firstname,
-    //           lastname: this.lastname,
-    //           additionalInformation: this.additionalInformation,
-    //           userPhoto: this.userPhoto
-    //         }
-    //       }
-    //   ).then(response => {
-    //     console.log(response.data)
-    //
-    //   }).catch(error => {
-    //     console.log(error)
-    //   })
-    // },
+    getOwnerRegisteredInfo: function () {
+      this.$http.get("/user/owner", {
+            params: {
+              userId: this.userId
+            }
+          }
+      ).then(response => {
+        this.ownerResponse = response.data
+
+      }).catch(error => {
+        console.log(error)
+      })
+    },
 
     // getOwnerRegisteredInfo: function () {
     //   this.$http.get("/user/owner")
@@ -152,6 +150,7 @@ export default {
       this.pictureRequest.userId = this.userId
       this.$http.post("/user/photo", this.pictureRequest
       ).then(response => {
+        this.getOwnerRegisteredInfo()
         console.log(response.data)
       }).catch(error => {
         console.log(error)
@@ -161,9 +160,9 @@ export default {
 
 
   },
-  // mounted() {
-  //   this.getOwnerRegisteredInfo()
-  // }
+  beforeMount() {
+    this.getOwnerRegisteredInfo()
+  }
 
 }
 </script>
