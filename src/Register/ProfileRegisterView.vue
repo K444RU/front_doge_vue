@@ -16,7 +16,8 @@
           Nimi
         </h4>
         <div style="margin-left: 330px" class="col-lg-6">
-          <input v-model="userRequest.firstname" type="text" class="form-control" placeholder="nimi" aria-label="Username"
+          <input v-model="userRequest.firstname" type="text" class="form-control" placeholder="nimi"
+                 aria-label="Username"
                  aria-describedby="basic-addon1">
         </div>
       </div>
@@ -25,7 +26,8 @@
           Perekonnanimi
         </h4>
         <div style="margin-left: 330px" class="col-lg-6">
-          <input v-model="userRequest.lastname" type="text" class="form-control" placeholder="perekonnanimi" aria-label="Username"
+          <input v-model="userRequest.lastname" type="text" class="form-control" placeholder="perekonnanimi"
+                 aria-label="Username"
                  aria-describedby="basic-addon1">
         </div>
       </div>
@@ -51,7 +53,8 @@
         <h4 style="margin-right: 630px">Kasutajanimi
         </h4>
         <div style="margin-left: 330px" class="col-lg-6">
-          <input v-model="userRequest.username" type="text" class="form-control" placeholder="username" aria-label="Username"
+          <input v-model="userRequest.username" type="text" class="form-control" placeholder="username"
+                 aria-label="Username"
                  aria-describedby="basic-addon1">
         </div>
       </div>
@@ -61,7 +64,8 @@
           Parool
         </h4>
         <div style="margin-left: 330px" class="col-lg-6">
-          <input v-model="userRequest.password" type="password" class="form-control" placeholder="parool" aria-label="Username"
+          <input v-model="userRequest.password" type="password" class="form-control" placeholder="parool"
+                 aria-label="Username"
                  aria-describedby="basic-addon1">
         </div>
       </div>
@@ -70,12 +74,11 @@
           Korda parool
         </h4>
         <div style="margin-left: 330px" class="col-lg-6">
-          <input v-model="userRequest.passwordRepeat" type="password" class="form-control" placeholder="korda parool" aria-label="Username"
+          <input v-model="userRequest.passwordRepeat" type="password" class="form-control" placeholder="korda parool"
+                 aria-label="Username"
                  aria-describedby="basic-addon1">
         </div>
         <div style="margin-left: 330px" class="col-lg-6">
-          <AlertErrorMessage :message="errorResponse.message"/>
-
         </div>
         <div>
           <h4 style="margin-right: 350px">
@@ -98,7 +101,8 @@
           Lisainfo enda kohta
         </h4>
         <div style="margin-left: 330px" class="col-lg-6">
-          <textarea v-model="userRequest.additionalInformation" class="form-control" aria-label="With textarea"></textarea>
+          <textarea v-model="userRequest.additionalInformation" class="form-control"
+                    aria-label="With textarea"></textarea>
         </div>
         <br>
         <br>
@@ -109,6 +113,8 @@
         <br>
       </div>
     </div>
+    <AlertErrorMessage :message="errorResponse.message"/>
+
     <div>
       <img src="@/assets/curious-dog.png">
     </div>
@@ -151,13 +157,18 @@ export default {
         userId: 0,
         roleId: 0,
       }
-      
 
 
     }
 
   },
   methods: {
+
+
+
+
+
+
     roleTypeSelect: function () {
       this.$http.get("/register/role")
           .then(result => {
@@ -170,8 +181,6 @@ export default {
 
 
     navigateToWalkerPage: function () {
-
-
 
 
       this.$router.push({
@@ -199,10 +208,17 @@ export default {
 
     registerNewUser: function () {
       this.errorResponse.message = ''
+
       if (this.userRequest.password !== this.userRequest.passwordRepeat) {
         this.errorResponse.message = 'Parool ei klappi'
-      } else {
-        this.$http.post("/register",this.userRequest
+      }
+
+      // else if (this.userRequest.firstname === 0 || this.userRequest.lastname === 0 || this.userRequest.email === 0 || this.userRequest.username ||this.userRequest.city || this.userRequest.password === 0 || this.userRequest.passwordRepeat === 0 || this.userRequest.roleId === 0) {
+      //   this.errorResponse.message = 'Täida kõik väljed'
+      // }
+
+      else {
+        this.$http.post("/register", this.userRequest
         ).then(response => {
           this.userResponse = response.data
           this.navigateToSelectedRolePage();

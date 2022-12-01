@@ -1,7 +1,7 @@
 <template id="login-form">
-  <div class="home">
-    <div  class="justify-content-start col-2 row MyLogo">
-      <img  src="@/assets/doglogo.png" class="MyLogo">
+  <div class="col row justify-content-center">
+    <div class="home">
+      <img style="margin-right: 1201px" alt="Vue logo" src="../assets/doglogo.png">
     </div>
 
     <div class="row">

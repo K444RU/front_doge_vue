@@ -23,6 +23,14 @@
     </div>
 
 
+    <div>
+      <p>
+        <label class="fw-bold" for="date">Pick a date</label>
+        <input type="date" id="date">
+      </p>
+    </div>
+
+
 
 
 
