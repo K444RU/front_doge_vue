@@ -70,11 +70,9 @@ export default {
               name: 'DogOwnerProfileView', query: {
                 userId: this.loginResponse.userId,
                 roleName: this.loginResponse.roleType
-
               }
             })
           }
-
         }).catch(error => {
           this.errorResponse = error.response.data
         });

@@ -138,10 +138,7 @@ export default {
           roleType: ''
         }
       ],
-      errorResponse: {
-        message: '',
-        errorCode: 0
-      },
+
       userRequest: {
         firstname: '',
         lastname: '',
@@ -156,18 +153,33 @@ export default {
       userResponse: {
         userId: 0,
         roleId: 0,
-      }
-
-
+      },
+      errorResponse: {
+        message: '',
+        errorCode: 0
+      },
     }
 
   },
   methods: {
 
 
-
-
-
+    registerNewUser: function () {
+      this.errorResponse.message = ''
+      if (!this.allFieldsAreFilled()) {
+        this.errorResponse.message = 'Täida kõik väljad';
+      } else if (this.userRequest.password !== this.userRequest.passwordRepeat) {
+        this.errorResponse.message = 'Parool ei klappi';
+      } else {
+        this.$http.post("/register", this.userRequest
+        ).then(response => {
+          this.userResponse = response.data
+          this.navigateToSelectedRolePage();
+        }).catch(error => {
+          this.errorResponse = error.response.data
+        })
+      }
+    },
 
     roleTypeSelect: function () {
       this.$http.get("/register/role")
@@ -175,18 +187,19 @@ export default {
             this.types = result.data
           })
           .catch(error => {
-            console.log(error)
+            this.errorResponse = error.response.data
           })
-    },
+    }
+    ,
 
 
     navigateToWalkerPage: function () {
-
-
       this.$router.push({
         name: 'DogWalkerProfileRoute'
       })
-    },
+    }
+    ,
+
 
     navigateToOwnerPage: function () {
       this.$router.push({
@@ -195,7 +208,9 @@ export default {
 
         }
       })
-    },
+    }
+    ,
+
 
     navigateToSelectedRolePage: function () {
       sessionStorage.setItem('userId', this.userResponse.userId)
@@ -206,30 +221,12 @@ export default {
       }
     },
 
-    registerNewUser: function () {
-      this.errorResponse.message = ''
+    allFieldsAreFilled: function () {
+      return this.userRequest.firstname !== 0 && this.userRequest.lastname === 0 || this.userRequest.email === 0 ||
+          this.userRequest.username || this.userRequest.city || this.userRequest.password === 0 ||
+          this.userRequest.passwordRepeat === 0 || this.userRequest.roleId === 0;
+    },
 
-      if (this.userRequest.password !== this.userRequest.passwordRepeat) {
-        this.errorResponse.message = 'Parool ei klappi'
-      }
-
-      // else if (this.userRequest.firstname === 0 || this.userRequest.lastname === 0 || this.userRequest.email === 0 || this.userRequest.username ||this.userRequest.city || this.userRequest.password === 0 || this.userRequest.passwordRepeat === 0 || this.userRequest.roleId === 0) {
-      //   this.errorResponse.message = 'Täida kõik väljed'
-      // }
-
-      else {
-        this.$http.post("/register", this.userRequest
-        ).then(response => {
-          this.userResponse = response.data
-          this.navigateToSelectedRolePage();
-
-        }).catch(error => {
-          console.log(error)
-        })
-
-
-      }
-    }
   },
   beforeMount() {
     this.roleTypeSelect()
