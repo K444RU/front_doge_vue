@@ -12,7 +12,7 @@
 
 
     <div class="col-lg-2">
-      <div v-if="ownerResponse.userPhoto.length > 0">
+      <div v-if="ownerResponse.userPhoto !== null && ownerResponse.userPhoto.length > 0">
         <h1>hello</h1>
         <img :src="ownerResponse.userPhoto" style="height: 200px">
       </div>
