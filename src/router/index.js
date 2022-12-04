@@ -2,91 +2,76 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 
-import ChooseRoleView from "@/components/ChooseRoleView";
-import succesfulRegisterView from "@/components/SuccesfulRegisterView";
-import dogOwnerProfileView from "@/profiles/DogOwnerProfileView";
-import dogWalkerProfileView from "@/profiles/DogWalkerProfileView";
-import profileRegisterView from "@/Register/ProfileRegisterView";
-import DogRegisterView from "@/Register/DogRegisterView";
+
+import dogOwnerProfileView from "@/views/OwnerProfileView";
+import dogWalkerProfileView from "@/views/WalkerProfileView";
+import profileRegisterView from "@/views/register/ProfileRegisterView";
+import DogRegisterView from "@/views/register/DogRegisterView";
 import testview from "@/views/testview";
-import FindDogWalkerPageView from "@/views/FindDogWalkerPageView";
-
-
+import FindDogWalkerPageView from "@/views/FindWalkerView";
 
 
 Vue.use(VueRouter)
 
 const routes = [
-  {
-    path: '/find/dogwalker',
-    name: 'FindDogWalkerPageRoute',
-    component: FindDogWalkerPageView
+    {
+        path: '/find/dogwalker',
+        name: 'FindDogWalkerPageRoute',
+        component: FindDogWalkerPageView
 
-  },
-  {
-    path: '/dog/register',
-    name: 'DogRegisterView',
-    component: DogRegisterView
+    },
+    {
+        path: '/dog/register',
+        name: 'DogRegisterView',
+        component: DogRegisterView
 
-  },
-  {
-    path: '/test',
-    name: 'testview',
-    component: testview
+    },
+    {
+        path: '/test',
+        name: 'testview',
+        component: testview
 
-  },
-  {
-    path: '/register',
-    name: 'profileRegisterView',
-    component: profileRegisterView
+    },
+    {
+        path: '/register',
+        name: 'profileRegisterView',
+        component: profileRegisterView
 
-  },
-  {
-    path: '/walker-profile',
-    name: 'DogWalkerProfileRoute',
-    component: dogWalkerProfileView
+    },
+    {
+        path: '/walker-profile',
+        name: 'DogWalkerProfileRoute',
+        component: dogWalkerProfileView
 
-  },
+    },
 
-  {
-    path: '/owner-profile',
-    name: 'DogOwnerProfileView',
-    component: dogOwnerProfileView
+    {
+        path: '/owner-profile',
+        name: 'DogOwnerProfileView',
+        component: dogOwnerProfileView
 
-  },
+    },
 
-  {
-    path: '/succes',
-    name: 'succesfulRegister',
-    component: succesfulRegisterView
 
-  },
-
-  {
-    path: '/chose',
-    name: 'chooseRole',
-    component: ChooseRoleView
-
-  },
-  {
-    path: '/',
-    name: 'home',
-    component: HomeView
-  },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: function () {
-      return import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    {
+        path: '/',
+        name: 'home',
+        component: HomeView
+    },
+    {
+        path: '/about',
+        name: 'about',
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: function () {
+            return import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+        }
     }
-  }
 ]
 
 const router = new VueRouter({
-  routes
+    routes
 })
 
 export default router

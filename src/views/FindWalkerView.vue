@@ -1,9 +1,8 @@
 <template>
   <div class="col row justify-content-center">
     <div class="home">
-      <img style="margin-right: 1201px" alt="Vue logo" src="../assets/doglogo.png">
+      <img style="margin-right: 1201px" alt="Vue logo" src="../assets/img/doglogo.png">
     </div>
-    
 
 
     <div>
@@ -26,15 +25,13 @@
 
     <div class="col-lg-2">
       <h3>Kuupäev</h3>
-      <p1> <label class="fw-bold" for="date">Alates</label>
+      <p1><label class="fw-bold" for="date">Alates</label>
         <input type="date" id="date"></p1>
       <br>
       <br>
-      <p1> <label class="fw-bold" for="date">Kuni</label>
+      <p1><label class="fw-bold" for="date">Kuni</label>
         <input type="date" id="date"></p1>
     </div>
-
-
 
 
     <div class="col-lg-2"><h3>
@@ -52,8 +49,6 @@
     </div>
 
 
-
-
     <div class="col-lg-2">
       <h3>Vali koera</h3>
       <select class="form-select" aria-label="Default select example">
@@ -64,16 +59,16 @@
       </select>
 
 
-      <div class="col-lg-2">        <img src="../assets/labdog.png" style="height: 150px"></div>
+      <div class="col-lg-2"><img src="../assets/img/labdog.png" style="height: 150px"></div>
 
       <br>
       <br>
     </div>
 
 
-
-<div class="row-cols-4">    <button  type="button" class="btn btn-success">Otsi</button>
-</div>
+    <div class="row-cols-4">
+      <button type="button" class="btn btn-success">Otsi</button>
+    </div>
 
 
   </div>

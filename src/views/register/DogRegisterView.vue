@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div class="col-20">
-      <img style="margin-right: 1201px" src="@/assets/doglogo.png">
+      <img style="margin-right: 1201px" src="@/assets/img/doglogo.png">
     </div>
     <h1>
       Lisa Koer
@@ -14,7 +14,7 @@
     <!--    </div>-->
     <div>
       <div v-if="dogRequest.dogPhoto === null">
-        <img src="../assets/deafult1.jpeg">
+        <img src="../../assets/img/deafult1.jpeg">
       </div>
       <div v-else>
         <img :src="dogRequest.dogPhoto" style="height: 200px">
@@ -89,14 +89,14 @@
       </div>
     </div>
     <div>
-      <img src="@/assets/curious-dog.png">
+      <img src="@/assets/img/curious-dog.png">
     </div>
 
   </div>
 </template>
 
 <script>
-import BreedsDropDown from "@/components/BreedsDropDown";
+import BreedsDropDown from "@/components/dog/BreedsDropDown";
 import ImageInput from "@/components/image/ImageInput";
 
 export default {

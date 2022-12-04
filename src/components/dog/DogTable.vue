@@ -19,7 +19,7 @@
       </thead>
       <tbody>
       <tr>
-        <th scope="row"><img style="height: 100px" src="../assets/dogavatry.jpeg"></th>
+        <th scope="row"><img style="height: 100px" src="../../assets/img/dogavatry.jpeg"></th>
         <td>Mark</td>
         <td>Otto</td>
         <td>@mdo</td>
@@ -30,7 +30,7 @@
         </td>
       </tr>
       <tr>
-        <th scope="row"><img style="height: 100px" src="../assets/dogavatry.jpeg"></th>
+        <th scope="row"><img style="height: 100px" src="../../assets/img/dogavatry.jpeg"></th>
         <td>Jacob</td>
         <td>Thornton</td>
         <td>@fat</td>
@@ -41,7 +41,7 @@
         </td>
       </tr>
       <tr>
-        <th scope="row"><img style="height: 100px" src="../assets/dogavatry.jpeg"></th>
+        <th scope="row"><img style="height: 100px" src="../../assets/img/dogavatry.jpeg"></th>
         <td colspan="2">Larry the Bird</td>
         <td>@twitter</td>
         <td>@twitter</td>

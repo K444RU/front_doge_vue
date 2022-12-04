@@ -2,7 +2,7 @@
   <form>
 
     <div class="col-20">
-      <img style="margin-right: 1201px" src="@/assets/doglogo.png">
+      <img style="margin-right: 1201px" src="@/assets/img/doglogo.png">
     </div>
 
     <div>
@@ -116,7 +116,7 @@
     <AlertErrorMessage :message="errorResponse.message"/>
 
     <div>
-      <img src="@/assets/curious-dog.png">
+      <img src="@/assets/img/curious-dog.png">
     </div>
 
 
