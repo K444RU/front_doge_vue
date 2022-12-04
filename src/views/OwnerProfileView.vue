@@ -42,7 +42,7 @@
 <script>
 
 import ImageInput from "@/components/image/ImageInput";
-import DogTableComponent from "@/components/dog/DogTable";
+import DogTableComponent from "@/components/dog/DogTableComponent";
 
 
 export default {
