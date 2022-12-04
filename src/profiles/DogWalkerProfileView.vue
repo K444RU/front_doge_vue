@@ -1,7 +1,7 @@
 <template>
   <div class="col row justify-content-center">
     <div class="home">
-      <img style="margin-right: 1201px" alt="Vue logo" src="../assets/doglogo.png">
+      <img style="margin-right: 1201px" alt="Vue logo" src="../assets/img/doglogo.png">
     </div>
 
 
@@ -9,7 +9,7 @@
 
     <div class="col-lg-5 row-cols-9">
       <h2></h2>
-      <img class="test" style="height: 250px" src="../assets/deafult1.jpeg"/>
+      <img class="test" style="height: 250px" src="../assets/img/deafult1.jpeg"/>
       <div class="row-cols-1">
         <button type="button" class="btn btn-success">Salvesta pilt</button>
       </div>

@@ -1,7 +1,7 @@
 <template>
   <div class="col row justify-content-center">
     <div class="home">
-      <img style="margin-right: 1201px" alt="Vue logo" src="../assets/doglogo.png">
+      <img style="margin-right: 1201px" alt="Vue logo" src="../assets/img/doglogo.png">
     </div>
 
 
@@ -61,7 +61,7 @@
       </select>
 
 
-      <div class="col-lg-2"><img src="../assets/labdog.png" style="height: 150px" alt=""></div>
+      <div class="col-lg-2"><img src="../assets/img/labdog.png" style="height: 150px" alt=""></div>
 
       <br>
       <br>

@@ -1,7 +1,7 @@
 <template>
   <div class="col row justify-content-center">
     <div class="home">
-      <img style="margin-right: 1201px" alt="Vue logo" src="../assets/img/doglogo.png">
+      <img style="margin-right: 1201px" alt="Vue logo" src="@/assets/img/doglogo.png">
     </div>
 
 
@@ -9,13 +9,15 @@
 
 
     <div class="col-lg-2">
-      <div v-if="userInfoResponse.userPhoto.length > 0">
-        <h1>User photo</h1>
+      <div v-if="userInfoResponse.userPhoto !== null && userInfoResponse.userPhoto.length > 0">
+        <h1>hello</h1>
         <img :src="userInfoResponse.userPhoto" style="height: 200px">
       </div>
       <div v-else>
-        <img class="test" style="height: 250px" src="../assets/img/deafult1.jpeg"/>
+        <img class="test" style="height: 250px" src="@/assets/img/deafult1.jpeg"/>
       </div>
+
+
       <ImageInput @pictureInputSuccess="setUserProfilePicture"/>
       <button v-on:click="addUserPicture" type="button" class="btn btn-success">Salvesta pilt</button>
     </div>
@@ -24,7 +26,7 @@
     <div class="col-lg-4">
       <h2> {{ userInfoResponse.firstname }} {{ userInfoResponse.lastname }}</h2>
       <h5>
-        Siia alla tuleb lisainfo registratsioonist
+        {{ userInfoResponse.additionalInformation }}
 
       </h5>
       <!--      <input v-model="date" type="date" name="" id="">-->

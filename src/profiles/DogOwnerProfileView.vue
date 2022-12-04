@@ -1,7 +1,7 @@
 <template>
   <div class="col row justify-content-center">
     <div class="home">
-      <img style="margin-right: 1201px" alt="Vue logo" src="../assets/doglogo.png">
+      <img style="margin-right: 1201px" alt="Vue logo" src="../assets/img/doglogo.png">
     </div>
 
 
@@ -17,7 +17,7 @@
         <img :src="ownerResponse.userPhoto" style="height: 200px">
       </div>
       <div v-else>
-        <img class="test" style="height: 250px" src="../assets/deafult1.jpeg"/>
+        <img class="test" style="height: 250px" src="../assets/img/deafult1.jpeg"/>
       </div>
 
 

@@ -3,6 +3,7 @@
 
     <h2>Minu Koerad
       <button v-on:click="$router.push('/dog/register')" type="button" class="btn btn-success">Lisa koer</button>
+      <button v-on:click="$router.push('/find/dogwalker')" type="button" class="btn btn-dark">Otsi koerahoidjat</button>
     </h2>
     <table class="table table-success table-striped">
       <thead>
