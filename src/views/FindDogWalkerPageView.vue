@@ -3,7 +3,6 @@
     <div class="home">
       <img style="margin-right: 1201px" alt="Vue logo" src="../assets/doglogo.png">
     </div>
-    
 
 
     <div>
@@ -16,64 +15,62 @@
     <div class="col-lg-2">
       <h3>Linn</h3>
       <select class="form-select" aria-label="Default select example">
-        <option selected>--Valige Linn--</option>
-        <option value="1">Tallinn</option>
-        <option value="2">Tartu</option>
-        <option value="3">Pärnu</option>
+        <option selected disabled value="0">--Valige Linn--</option>
+        <option v-for="city in cities" :value="city.cityId">{{ city.cityName }}</option>
+
       </select>
     </div>
 
 
     <div class="col-lg-2">
       <h3>Kuupäev</h3>
-      <p1> <label class="fw-bold" for="date">Alates</label>
-        <input type="date" id="date"></p1>
+      <p>
+        <label class="fw-bold" for="date">Alates</label>
+        <input type="date" id="date">
+      </p>
       <br>
       <br>
-      <p1> <label class="fw-bold" for="date">Kuni</label>
-        <input type="date" id="date"></p1>
+      <p>
+        <label class="fw-bold" for="date">Kuni</label>
+        <input type="date" id="date">
+      </p>
     </div>
-
-
 
 
     <div class="col-lg-2"><h3>
       Kellaaeg</h3>
-      <p1>
+      <p>
         <label for="time">Alates</label>
         <input type="time" id="time">
-      </p1>
+      </p>
       <br>
       <br>
-      <p1>
+      <p>
         <label for="time">Kuni</label>
         <input type="time" id="time">
-      </p1>
+      </p>
     </div>
-
-
 
 
     <div class="col-lg-2">
       <h3>Vali koera</h3>
       <select class="form-select" aria-label="Default select example">
-        <option selected>--Valige koera--</option>
-        <option value="1">Pica</option>
-        <option value="2">Chuu</option>
-        <option value="3">Slowpoke</option>
+        <option  selected disabled value="0">--Valige koera--</option>
+        <option  v-for="dogs in dogRequest" :value="dogs.dogId">{{ dogs.dogName }}</option>
+
       </select>
 
 
-      <div class="col-lg-2">        <img src="../assets/labdog.png" style="height: 150px"></div>
+      <div class="col-lg-2"><img src="../assets/labdog.png" style="height: 150px" alt=""></div>
 
       <br>
       <br>
     </div>
 
 
-
-<div class="row-cols-4">    <button  type="button" class="btn btn-success">Otsi</button>
-</div>
+    <div class="row-cols-4">
+      <button type="button" class="btn btn-success">Otsi</button>
+    </div>
 
 
   </div>
@@ -81,7 +78,54 @@
 
 <script>
 export default {
-  name: "FindDogWalkerPageView"
+  name: "FindDogWalkerPageView",
+
+  data: function () {
+    return {
+
+
+      cities:
+          {
+            cityId: '',
+            cityName: ''
+          },
+
+      dogRequest: {
+        dogName: '',
+        dogId: 0
+      }
+
+
+
+
+
+    }
+  },
+  methods: {
+    citySelectInfo: function () {
+      this.$http.get("/walking/city")
+          .then(response => {
+            this.cities = response.data
+          })
+          .catch(error => {
+            console.log(error)
+          })
+    },
+
+    getDogbyUserId: function () {
+      this.$http.get("/dog/select")
+          .then(response => {
+            this.dogRequest = response.data
+          })
+          .catch(error => {
+            console.log(error)
+          })
+    },
+  },
+  beforeMount() {
+    this.citySelectInfo()
+    this.getDogbyUserId()
+  }
 }
 </script>
 

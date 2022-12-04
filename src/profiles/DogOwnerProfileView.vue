@@ -29,7 +29,7 @@
     <div  class="col-lg-4">
       <h2 > {{ ownerResponse.firstname }} {{ ownerResponse.lastname }}</h2>
       <h5>
-        Siia alla tuleb lisainfo registratsioonist
+        {{ ownerResponse.additionalInformation }}
 
       </h5>
     </div>
@@ -76,7 +76,7 @@ export default {
   methods: {
 
     getOwnerRegisteredInfo: function () {
-      this.$http.get("/user/owner", {
+      this.$http.get("/user/info", {
             params: {
               userId: this.userId
             }

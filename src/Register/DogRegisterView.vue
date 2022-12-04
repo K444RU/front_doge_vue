@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div class="col-20">
-      <img style="margin-right: 1201px" src="@/assets/doglogo.png">
+      <img style="margin-right: 1201px" src="@/assets/doglogo.png" alt="">
     </div>
     <h1>
       Lisa Koer
@@ -14,10 +14,10 @@
     <!--    </div>-->
     <div>
       <div v-if="dogRequest.dogPhoto === null">
-        <img src="../assets/deafult1.jpeg">
+        <img src="../assets/deafult1.jpeg" alt="">
       </div>
       <div v-else>
-        <img :src="dogRequest.dogPhoto" style="height: 200px">
+        <img :src="dogRequest.dogPhoto" style="height: 200px" alt="">
       </div>
     </div>
 
@@ -89,14 +89,13 @@
       </div>
     </div>
     <div>
-      <img src="@/assets/curious-dog.png">
+      <img src="@/assets/curious-dog.png" alt="">
     </div>
 
   </div>
 </template>
 
 <script>
-import BreedsDropDown from "@/components/BreedsDropDown";
 import ImageInput from "@/components/image/ImageInput";
 
 export default {
@@ -188,7 +187,7 @@ export default {
         this.dogRequest.dogAge = Number(this.dogRequest.dogAge)
 
         this.$http.post("/dog/registration", this.dogRequest
-        ).then(response => {
+        ).then(() => {
           this.$router.push({
             name: 'DogOwnerProfileView'
           })

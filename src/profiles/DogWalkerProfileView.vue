@@ -5,7 +5,7 @@
     </div>
 
 
-    <h1 class="fw-bolder">Koerahoidja Profiil</h1>
+    <h1 class="fw-bolder">Koerahoidja Profiil {{ userId }}</h1>
 
     <div class="col-lg-5 row-cols-9">
       <h2></h2>
@@ -16,10 +16,15 @@
     </div>
 
 
-    <div class="col-lg-6">
-      <h2>Nimi Perekonnanimi</h2>
+
+
+
+
+
+    <div  class="col-lg-4">
+      <h2 > {{ walkerResponse.firstname }} {{ walkerResponse.lastname }}</h2>
       <h5>
-        Siia alla tuleb lisainfo registratsioonist
+        {{ walkerResponse.additionalInformation }}
 
       </h5>
     </div>
@@ -31,16 +36,70 @@
 
 <script>
 
+
+import ImageInput from "@/components/image/ImageInput";
+
+
 export default {
   name: 'DogWalkerProfileView',
+  components: {ImageInput},
+
   data: function () {
     return {
-      walker: sessionStorage.getItem('userId'),
+      userId: sessionStorage.getItem('userId'),
+      pictureRequest: {
+        userId: 0,
+        photoData: '',
+
+      },
+      pictureResponse: {
+        userId: 0,
+        photoData: null
+      },
+      walkerResponse: {
+        firstname: '',
+        lastname: '',
+        additionalInformation: null,
+        userPhoto: ''
+
+      }
 
     }
 
 
   },
+  methods: {
+    getWalkerRegisteredInfo: function () {
+      this.$http.get("/user/owner", {
+            params: {
+              userId: this.userId
+            }
+          }
+      ).then(response => {
+        this.walkerResponse = response.data
+
+      }).catch(error => {
+        console.log(error)
+      })
+    },
+    setOwnerProfilePicture:function (picture){
+      this.pictureRequest.photoData = picture;
+    },
+
+    addPicture: function () {
+      this.pictureRequest.userId = this.userId
+      this.$http.post("/user/photo", this.pictureRequest
+      ).then(response => {
+        this.getOwnerRegisteredInfo()
+        console.log(response.data)
+      }).catch(error => {
+        console.log(error)
+      })
+    },
+  },
+  beforeMount() {
+    this.getWalkerRegisteredInfo()
+  }
 
 }
 </script>
