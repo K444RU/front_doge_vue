@@ -63,6 +63,8 @@
 
 
     <div class="row-cols-4">
+      <br>
+      <br>
       <button type="button" class="btn btn-success">Otsi</button>
     </div>
 
