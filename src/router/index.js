@@ -9,11 +9,18 @@ import profileRegisterView from "@/views/register/ProfileRegisterView";
 import DogRegisterView from "@/views/register/DogRegisterView";
 import testview from "@/views/testview";
 import FindDogWalkerPageView from "@/views/FindWalkerView";
+import AddWalkingServiceView from "@/views/register/AddWalkingServiceView";
 
 
 Vue.use(VueRouter)
 
 const routes = [
+    {
+        path: '/add/service',
+        name: 'AddWalkingServiceRoute',
+        component: AddWalkingServiceView
+
+    },
     {
         path: '/find/dogwalker',
         name: 'FindDogWalkerPageRoute',

@@ -1,7 +1,7 @@
 <template>
   <div class="col row justify-content-center">
     <div class="home">
-      <img style="margin-right: 1201px" alt="Vue logo" src="@/assets/img/doglogo.png">
+      <img style="margin-right: 1201px" alt="Vue logo" src="../assets/img/doglogo.png">
     </div>
 
 
@@ -32,8 +32,9 @@
       <!--      <input v-model="date" type="date" name="" id="">-->
 
     </div>
-    <div class="col-lg-4">
 
+    <div class="col-lg-4">
+      <button v-on:click="$router.push('/add/service')" type="button" class="btn btn-dark">Lisa oma teenus</button>
     </div>
   </div>
 </template>
