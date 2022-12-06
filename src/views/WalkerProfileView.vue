@@ -9,9 +9,10 @@
 
 
     <div class="col-lg-2">
+      <h2> {{ userInfoResponse.firstname }} {{ userInfoResponse.lastname }}</h2>
       <div v-if="userInfoResponse.userPhoto !== null && userInfoResponse.userPhoto.length > 0">
         <h1>hello</h1>
-        <img :src="userInfoResponse.userPhoto" style="height: 200px">
+        <img :src="userInfoResponse.userPhoto" style="height: 300px">
       </div>
       <div v-else>
         <img class="test" style="height: 250px" src="@/assets/img/deafult1.jpeg"/>
@@ -24,16 +25,18 @@
 
 
     <div class="col-lg-4">
-      <h2> {{ userInfoResponse.firstname }} {{ userInfoResponse.lastname }}</h2>
-      <h5>
-        {{ userInfoResponse.additionalInformation }}
 
-      </h5>
+      <div>
+        <h4>
+          {{ userInfoResponse.additionalInformation }}
+        </h4>
+      </div>
+
       <!--      <input v-model="date" type="date" name="" id="">-->
 
     </div>
 
-    <div class="col-lg-4">
+    <div class="col-lg-5">
       <button v-on:click="$router.push('/add/service')" type="button" class="btn btn-dark">Lisa oma teenus</button>
     </div>
   </div>

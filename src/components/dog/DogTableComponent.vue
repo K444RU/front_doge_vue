@@ -8,45 +8,35 @@
     <table class="table table-success table-striped">
       <thead>
       <tr>
-        <th scope="col"></th>
+        <th scope="col">#</th>
+        <th scope="col">Photo</th>
         <th scope="col">Name</th>
         <th scope="col">Breed</th>
         <th scope="col">Age</th>
         <th scope="col">Size</th>
         <th scope="col">Additionalinfo</th>
-        <th scope="col"></th>
+        <td></td>
 
       </tr>
       </thead>
       <tbody>
-      <tr>
-        <th scope="row"><img style="height: 100px" src="../../assets/img/dogavatry.jpeg"></th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-        <td>@mdo</td>
-        <td>@mdo</td>
+      <tr v-for="dogs in dogTableResponse">
+        <th scope="row">{{ dogs.sequenceNumber }}</th>
         <td>
-          <font-awesome-icon style="height: 35px" icon="fa-solid fa-trash"/>
+          <div v-if="dogs.dogPhoto == null">
+            <img src="@/assets/img/deafult1.jpeg" style="height: 75px">
+          </div>
+          <div v-else>
+            <img :src="dogs.dogPhoto" style="height: 75px" alt="">
+          </div>
+          <!--          {{ dogs.dogPhoto }}-->
+
         </td>
-      </tr>
-      <tr>
-        <th scope="row"><img style="height: 100px" src="../../assets/img/dogavatry.jpeg"></th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-        <td>@fat</td>
-        <td>@fat</td>
-        <td>
-          <font-awesome-icon style="height: 35px" icon="fa-solid fa-trash"/>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row"><img style="height: 100px" src="../../assets/img/dogavatry.jpeg"></th>
-        <td colspan="2">Larry the Bird</td>
-        <td>@twitter</td>
-        <td>@twitter</td>
-        <td>@twitter</td>
+        <td>{{ dogs.dogName }}</td>
+        <td>{{ dogs.dogBreed }}</td>
+        <td>{{ dogs.dogAge }}</td>
+        <td>{{ dogs.dogSizeType }}</td>
+        <td>{{ dogs.dogAdditionalInformation }}</td>
         <td>
           <font-awesome-icon style="height: 35px" icon="fa-solid fa-trash"/>
         </td>
@@ -57,10 +47,21 @@
   </div>
 </template>
 <script>
+
+import ImageInput from "@/components/image/ImageInput";
+
 export default {
   name: 'DogTableComponent',
-  dogTableResponse: {
+  components: {ImageInput},
+  props: {
+    dogTableResponse: Array()
+  },
 
-  }
+
+  data: function () {
+    return {}
+  },
+  methods: {},
+
 }
 </script>

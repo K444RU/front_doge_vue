@@ -1,7 +1,7 @@
 <template id="login-form">
   <div class="col row justify-content-center">
     <div class="home">
-      <img style="margin-right: 1201px" alt="Vue logo" src="../assets/img/doglogo.png">
+      <img  style="margin-right: 1201px" alt="Vue logo" src="../assets/img/doglogo.png">
     </div>
 
     <div class="row">
@@ -41,4 +41,7 @@ export default {
 }
 
 
+
 </script>
+
+

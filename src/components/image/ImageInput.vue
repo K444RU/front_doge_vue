@@ -1,6 +1,6 @@
 <template>
   <div>
-    <input type="file" @change="handleImage" accept="image/x-png,image/jpeg">
+    <input class="col-lg-9" type="file" @change="handleImage" accept="image/x-png,image/jpeg">
   </div>
 </template>
 <script>

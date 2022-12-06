@@ -28,8 +28,7 @@
         <label class="fw-bold" for="date">Alates</label>
         <input type="date" id="date">
       </p>
-      <br>
-      <br>
+
       <p>
         <label class="fw-bold" for="date">Kuni</label>
         <input type="date" id="date">
@@ -37,28 +36,30 @@
     </div>
 
 
-    <div class="col-lg-2"><h3>
-      Kellaaeg</h3>
-      <p>
-        <label for="time">Alates</label>
-        <input type="time" id="time">
-      </p>
-      <br>
-      <br>
-      <p>
-        <label for="time">Kuni</label>
-        <input type="time" id="time">
-      </p>
+    <div class="col-lg-2">
+      <h3>Kellaaeg</h3>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Alates</span>
+        <input type="text" class="form-control" placeholder="kellaaeg"
+               aria-label="Username" aria-describedby="basic-addon1">
+      </div>
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Kuni</span>
+        <input type="text" class="form-control" placeholder="kellaaeg"
+               aria-label="Username" aria-describedby="basic-addon1">
+      </div>
     </div>
 
 
     <div class="col-lg-2">
       <h3>Vali koera</h3>
-      <select class="form-select" aria-label="Default select example">
-        <option  selected disabled value="0">--Valige koera--</option>
-        <option  v-for="dogs in dogRequest" :value="dogs.dogId">{{ dogs.dogName }}</option>
-
-      </select>
+      <div v-for="dogs in dogRequest">
+        <input class="form-check-input" type="checkbox" id="flexCheckDefault">
+        <label :value="dogRequest.dogId" class="form-check-label" for="flexCheckDefault">
+          {{ dogs.dogName }}
+        </label>
+      </div>
 
 
       <div class="col-lg-2"><img src="../assets/img/labdog.png" style="height: 150px" alt=""></div>
@@ -69,7 +70,7 @@
 
 
     <div class="row-cols-4">
-      <button type="button" class="btn btn-success">Otsi</button>
+      <button v-on:click="$router.push('/found/service')" type="button" class="btn btn-success">Otsi</button>
     </div>
 
 
@@ -82,6 +83,7 @@ export default {
 
   data: function () {
     return {
+      userId: Number(sessionStorage.getItem('userId')),
 
 
       cities:
@@ -94,9 +96,6 @@ export default {
         dogName: '',
         dogId: 0
       }
-
-
-
 
 
     }
@@ -112,20 +111,27 @@ export default {
           })
     },
 
-    getDogbyUserId: function () {
-      this.$http.get("/dog/select")
-          .then(response => {
-            this.dogRequest = response.data
-          })
-          .catch(error => {
-            console.log(error)
-          })
+    getDogNameByUserId: function () {
+      this.$http.get("/dog/select", {
+            params: {
+              userId: Number(sessionStorage.getItem('userId')),
+            }
+          }
+      ).then(response => {
+        this.dogRequest = response.data
+      }).catch(error => {
+        console.log(error)
+      })
     },
+
+
   },
   beforeMount() {
     this.citySelectInfo()
-    this.getDogbyUserId()
+    this.getDogNameByUserId()
   }
 }
 </script>
+
+
 

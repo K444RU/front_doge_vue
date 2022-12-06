@@ -14,7 +14,7 @@
 
     <div class="col-lg-2">
       <h3>Linn</h3>
-      <select class="form-select" aria-label="Default select example">
+      <select v-model="walkingRequest.cityId" class="form-select" aria-label="Default select example">
         <option selected disabled value="0">--Valige Linn--</option>
         <option v-for="city in cities" :value="city.cityId">{{ city.cityName }}</option>
 
@@ -26,38 +26,47 @@
       <h3>Kuupäev</h3>
       <p>
         <label class="fw-bold" for="date">Alates</label>
-        <input type="date" id="date">
+        <input v-model="walkingRequest.dateFrom" type="date" id="date">
       </p>
       <p>
         <label class="fw-bold" for="date">Kuni</label>
-        <input type="date" id="date">
+        <input v-model="walkingRequest.dateTo" type="date" id="date">
       </p>
     </div>
 
 
-    <div class="col-lg-2"><h3>
-      Kellaaeg</h3>
-      <p>
-        <label for="time">Alates</label>
-        <input type="time" id="time">
-      </p>
-      <p>
-        <label for="time">Kuni</label>
-        <input type="time" id="time">
-      </p>
+    <div class="col-lg-2">
+      <h3>Kellaaeg</h3>
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Alates</span>
+        <input v-model="walkingRequest.timeFrom" type="text" class="form-control" placeholder="kellaaeg"
+               aria-label="Username" aria-describedby="basic-addon1">
+      </div>
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Kuni</span>
+        <input v-model="walkingRequest.timeTo" type="text" class="form-control" placeholder="kellaaeg"
+               aria-label="Username" aria-describedby="basic-addon1">
+      </div>
+
+
     </div>
 
 
     <div class="col-lg-4">
       <h3>Vali koera suurust</h3>
-      <div class="input-group">
-        <div v-for="option in sizes" class="col-lg-5">
-          <input class="form-check-input" type="checkbox" id="flexCheckDefault">
-          <label class="form-check-label" for="flexCheckDefault">{{ option.sizeType }}</label>
-        </div>
-        </div>
+      <div v-for="size in walkingRequest.sizes" class="form-check">
+        <input v-model="size.isSelected" class="form-check-input" type="checkbox" id="flexCheckDefault">
+        <label class="form-check-label" for="flexCheckDefault">
+          {{ size.sizeType }}
+        </label>
+      </div>
 
-
+<!--      <div v-for="option in atmOptions" class="form-check">-->
+<!--        <input v-model="option.isSelected" class="form-check-input" type="checkbox" id="flexCheckDefault">-->
+<!--        <label class="form-check-label" for="flexCheckDefault">-->
+<!--          {{ option.optionName }}-->
+<!--        </label>-->
+<!--      </div>-->
 
     </div>
 
@@ -65,7 +74,8 @@
     <div class="row-cols-4">
       <br>
       <br>
-      <button type="button" class="btn btn-success">Otsi</button>
+      <!--      <button v-on:click="$router.push('/active/service')" type="button" class="btn btn-success">Lisa teenus</button>-->
+      <button v-on:click="addNewService" type="button" class="btn btn-success">Lisa uus teenus</button>
     </div>
 
 
@@ -76,6 +86,7 @@
 export default {
   name: "AddWalkingServiceView",
 
+
   data: function () {
     return {
       cities:
@@ -85,11 +96,30 @@ export default {
           },
 
       sizes:
+          [
+            {
+              sizeId: 0,
+              sizeType: '',
+              isSelected: true
+            }
+          ],
+      walkingRequest:
           {
-            sizeType: '',
-            sizeId: '',
-            sizePrice: ''
-          },
+            userId: Number(sessionStorage.getItem('userId')),
+            cityId: 0,
+            dateFrom: '',
+            dateTo: '',
+            timeFrom: '',
+            timeTo: '',
+            sizes: [
+              {
+                sizeId: 0,
+                sizeType: '',
+                isSelected: true
+              }
+            ]
+          }
+
     }
   },
   methods: {
@@ -105,14 +135,28 @@ export default {
 
     getDogSizesInfo: function () {
       console.log('olen siin 1')
+      console.log()
       this.$http.get("/dog/size")
           .then(result => {
-            this.sizes = result.data
+            this.walkingRequest.sizes = result.data
+            alert(JSON.stringify(this.walkingRequest))
           })
           .catch(error => {
             console.log(error)
           })
     },
+
+    addNewService: function () {
+      this.$http.post("/walking/register", this.walkingRequest
+      ).then(() => {
+        this.$router.push({
+          name: ('WalkerActiveServicesRoute')
+        })
+      }).catch(error => {
+        console.log(error)
+      })
+    },
+
   },
   beforeMount() {
     this.citySelectInfo()

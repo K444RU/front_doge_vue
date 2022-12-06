@@ -9,7 +9,7 @@
                aria-describedby="basic-addon1">
       </div>
       <div >
-        <input v-model="password" type="password" class="form-control" placeholder="Username" aria-label="Parool"
+        <input v-model="password" type="password" class="form-control" placeholder="Password" aria-label="Parool"
                aria-describedby="basic-addon1">
       </div>
       <br>

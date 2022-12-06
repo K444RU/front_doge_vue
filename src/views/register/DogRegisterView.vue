@@ -127,9 +127,9 @@ export default {
 
       sizes:
           {
+            sizeId: 0,
             sizeType: '',
-            sizeId: '',
-            sizePrice: ''
+            isSelected: true
           },
       userResponse: {
         userId: 0,

@@ -1,5 +1,6 @@
 <template>
 <div class="col row justify-content-center">
+
   <div class="home">
     <img style="margin-right: 1201px" alt="Vue logo" src="../assets/img/doglogo.png">
   </div>
@@ -39,15 +40,23 @@
 
 
   </div>
+
 </div>
 </template>
 
 <script>
 export default {
-  name: "testview"
+  name: "testview",
+
+  data: function (){
+    return{
+    }
+  }
 }
 </script>
 
 <style scoped>
 
+
 </style>
+
