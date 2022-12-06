@@ -20,25 +20,25 @@
       </tr>
       </thead>
       <tbody>
-      <tr v-for="dogs in dogTableResponse">
-        <th scope="row">{{ dogs.sequenceNumber }}</th>
+      <tr v-for="dog in dogTableResponse">
+        <th scope="row">{{ dog.sequenceNumber }}</th>
         <td>
-          <div v-if="dogs.dogPhoto == null">
+          <div v-if="dog.dogPhoto == null">
             <img src="@/assets/img/deafult1.jpeg" style="height: 75px">
           </div>
           <div v-else>
-            <img :src="dogs.dogPhoto" style="height: 75px" alt="">
+            <img :src="dog.dogPhoto" style="height: 75px" alt="">
           </div>
           <!--          {{ dogs.dogPhoto }}-->
 
         </td>
-        <td>{{ dogs.dogName }}</td>
-        <td>{{ dogs.dogBreed }}</td>
-        <td>{{ dogs.dogAge }}</td>
-        <td>{{ dogs.dogSizeType }}</td>
-        <td>{{ dogs.dogAdditionalInformation }}</td>
+        <td>{{ dog.dogName }}</td>
+        <td>{{ dog.dogBreed }}</td>
+        <td>{{ dog.dogAge }}</td>
+        <td>{{ dog.dogSizeType }}</td>
+        <td>{{ dog.dogAdditionalInformation }}</td>
         <td>
-          <font-awesome-icon style="height: 35px" icon="fa-solid fa-trash"/>
+          <font-awesome-icon v-on:click="deleteDog(dog.dogId)" style="height: 35px" icon="fa-solid fa-trash"/>
         </td>
       </tr>
       </tbody>
@@ -61,7 +61,21 @@ export default {
   data: function () {
     return {}
   },
-  methods: {},
+  methods: {
+    deleteDog: function (dogId) {
+      this.$http.delete("/dog", {
+            params: {
+              dogId: dogId,
+            }
+          }
+      ).then(response => {
+        this.$emit('deleteDogEvent')
+      }).catch(error => {
+        console.log(error)
+      })
+    },
+
+  },
 
 }
 </script>

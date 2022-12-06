@@ -31,7 +31,7 @@
       </h5>
       <!--      <input v-model="date" type="date" name="" id="">-->
       <br>
-      <DogTableComponent :dog-table-response="dogTableResponse"/>
+      <DogTableComponent :dog-table-response="dogTableResponse" @deleteDogEvent="getDogInfo"/>
     </div>
   </div>
 </template>
@@ -72,6 +72,7 @@ export default {
       },
 
       dogTableResponse: {
+        dogId: 0,
         dogPhoto: '',
         dogName: '',
         dogBreed: '',
@@ -145,11 +146,7 @@ export default {
       ).then(response => {
 
         this.dogTableResponse = response.data
-        if (this.dogTableResponse [0].dogPhoto == null ){
-          alert('On null')
-        } else {
-          alert('ei ole null')
-        }
+        if (this.dogTableResponse [0].dogPhoto == null )
         this.addSequenceNumbers()
 
 

@@ -26,13 +26,15 @@
           </thead>
           <tbody>
           <tr v-for="walker in walkerTableInfoResponse">
-            <th scope="row">{{ walker.addSequenceNumbers }}</th>
+            <th scope="row">{{ walker.sequenceNumber }}</th>
             <td>{{ walker.cityName }}</td>
             <td>{{ walker.dateFrom }}</td>
             <td>{{ walker.dateTo }}</td>
             <td>{{ walker.timeFrom }}</td>
             <td>{{ walker.timeTo }}</td>
-            <td>{{ walker.sizeType }}</td>
+            <td><div v-for="sizeType in walker.sizeTypes">
+              {{ sizeType.sizeType }}
+            </div></td>
             <td>
               <font-awesome-icon style="height: 35px" icon="fa-solid fa-trash"/>
             </td>
@@ -57,19 +59,22 @@ export default {
       userId: Number(sessionStorage.getItem('userId')),
 
 
-      walkerTableInfoResponse: {
-        walkingId: 0,
-        cityName: '',
-        dateFrom: '',
-        dateTo: '',
-        timeFrom: 0,
-        timeTo: 0,
-        sizeType: [
-          {
-            sizeType: ''
-          }
-        ]
-      }
+      walkerTableInfoResponse: [
+        {
+          sequenceNumber: 0,
+          walkingId: 0,
+          cityName: '',
+          dateFrom: '',
+          dateTo: '',
+          timeFrom: 0,
+          timeTo: 0,
+          sizeTypes: [
+            {
+              sizeType: ''
+            }
+          ]
+        }
+      ]
     }
   },
   methods: {
@@ -92,8 +97,8 @@ export default {
     },
     addSequenceNumbers: function () {
       let counter = 1
-      this.walkerTableInfoResponse.forEach(location => {
-        location.sequenceNumber = counter
+      this.walkerTableInfoResponse.forEach(value => {
+        value.sequenceNumber = counter
         counter++
       });
     },
