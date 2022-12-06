@@ -139,7 +139,6 @@ export default {
       this.$http.get("/dog/size")
           .then(result => {
             this.walkingRequest.sizes = result.data
-            alert(JSON.stringify(this.walkingRequest))
           })
           .catch(error => {
             console.log(error)

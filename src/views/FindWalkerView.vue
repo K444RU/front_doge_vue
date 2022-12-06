@@ -95,12 +95,41 @@ export default {
       dogRequest: {
         dogName: '',
         dogId: 0
+      },
+
+      orderRequest: {
+        walkingId: 0,
+        walkingDate: '',
+        timeFrom: 0,
+        timeTo: 0,
+        address: '',
+        dog: [
+          {
+            dogId: 0,
+            isSelected: true
+          }
+        ]
       }
+
+
 
 
     }
   },
   methods: {
+
+    addNewOrder: function () {
+      this.$http.post("/walking/order", this.orderRequest
+      ).then(response => {
+        this.$router.push({
+          name: ('')
+        })
+      }).catch(error => {
+        console.log(error)
+      })
+    },
+
+
     citySelectInfo: function () {
       this.$http.get("/walking/city")
           .then(response => {
