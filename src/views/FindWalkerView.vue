@@ -1,7 +1,7 @@
 <template>
   <div class="col row justify-content-center">
 
-    <div class="myApp"><img style="margin-right: 1201px" alt="Vue logo" src="@/assets/img/doglogo.png"></div>
+    <div class="home"><img style="margin-right: 1201px" alt="Vue logo" src="@/assets/img/doglogo.png"></div>
     <nav class="col col-lg-7">
 
       <router-link to="/owner-profile">
@@ -28,7 +28,7 @@
     </div>
 
 
-    <div class="col-lg-2">
+    <div style="margin-left: 10px" class="col-lg-2">
       <h3>Linn</h3>
       <select class="form-select" aria-label="Default select example">
         <option selected disabled value="0">--Valige Linn--</option>
@@ -83,16 +83,15 @@
       </div>
 
 
-      <div class="col-lg-2"><img src="../assets/img/labdog.png" style="height: 150px" alt=""></div>
+      <div class="col-lg-2">
+        <img src="../assets/img/labdog.png" style="height: 150px" alt=""></div>
+      </div>
 
-      <br>
-      <br>
-    </div>
 
 
     <div class="col col-lg-2">
       <!--      <button v-on:click="$router.push('/found/service')" type="button" class="btn btn-success">Otsi</button>-->
-      <font-awesome-icon v-on:click="addNewOrder" style="height: 75px; color: #1DB954;" icon="fa-solid fa-circle-plus"/>
+      <font-awesome-icon v-on:click="addNewOrder" style="height: 100px; color: #1DB954;" icon="fa-solid fa-circle-plus"/>
     </div>
 
 

@@ -160,6 +160,7 @@ export default {
       ).then(() => {
         this.$router.push({
           name: ('WalkerActiveServicesRoute')
+
         })
       }).catch(error => {
         console.log(error)

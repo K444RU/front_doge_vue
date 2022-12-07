@@ -14,7 +14,7 @@
         <button type="button" class="btn btn-success">Lisa koer</button>
       </router-link>
       <router-link to="/">
-        <button  type="button" class="btn btn-success">Logi välja</button>
+        <button type="button" class="btn btn-success">Logi välja</button>
       </router-link>
 
     </nav>
@@ -28,10 +28,10 @@
       <h2> {{ userInfoResponse.firstname }} {{ userInfoResponse.lastname }}</h2>
       <div v-if="userInfoResponse.userPhoto !== null && userInfoResponse.userPhoto.length > 0">
         <h1>hello</h1>
-        <img :src="userInfoResponse.userPhoto" style="height: 325px">
+        <img class="circular--portrait" :src="userInfoResponse.userPhoto" >
       </div>
       <div v-else>
-        <img class="test" style="height: 250px; " src="@/assets/img/deafult1.jpeg"/>
+        <img class="test" style="height: 200px; " src="@/assets/img/deafult1.jpeg"/>
       </div>
 
 
@@ -94,7 +94,8 @@ export default {
         dogBreed: '',
         dogAge: '',
         dogSizeType: '',
-        dogAdditionalInformation: ''
+        dogAdditionalInformation: '',
+        status: ''
       }
 
 
@@ -142,17 +143,6 @@ export default {
       });
     },
 
-    // getDogInfo: function () {
-    //
-    //   this.$http.get("/dog/select")
-    //       .then(response => {
-    //         this.dogTableResponse = response.data
-    //         this.addSequenceNumbers()
-    //       })
-    //       .catch(error => {
-    //         console.log(error)
-    //       })
-    // },
     getDogInfo: function () {
 
       this.$http.get("/dog/info", {
@@ -172,6 +162,10 @@ export default {
         console.log(error)
       })
     },
+
+
+
+
 
 
   },

@@ -24,12 +24,11 @@
         <th scope="row">{{ dog.sequenceNumber }}</th>
         <td>
           <div v-if="dog.dogPhoto == 0 || dog.dogPhoto == null">
-            <img src="@/assets/img/dogdeafultavatar.png" style="height: 75px">
+            <img src="@/assets/img/dogdeafultavatar.png" style="height: 75px" alt="">
           </div>
           <div v-else>
-            <img :src="dog.dogPhoto" style="height: 75px" alt="">
+            <img class="dog--circular--portrait" :src="dog.dogPhoto"  alt="">
           </div>
-          <!--          {{ dogs.dogPhoto }}-->
 
         </td>
         <td>{{ dog.dogName }}</td>
@@ -38,7 +37,7 @@
         <td>{{ dog.dogSizeType }}</td>
         <td>{{ dog.dogAdditionalInformation }}</td>
         <td>
-          <font-awesome-icon v-on:click="deleteDog(dog.dogId)" style="height: 35px" icon="fa-solid fa-trash"/>
+          <font-awesome-icon  v-on:click="deleteDog(dog.dogId, dog.status)" style="height: 35px" icon="fa-solid fa-trash"/>
         </td>
       </tr>
       </tbody>
@@ -54,12 +53,16 @@ export default {
   name: 'DogTableComponent',
   components: {ImageInput},
   props: {
-    dogTableResponse: Array()
+    dogTableResponse: Array(),
+
   },
 
 
   data: function () {
-    return {}
+    return {
+
+
+    }
   },
   methods: {
     deleteDog: function (dogId) {
@@ -68,12 +71,31 @@ export default {
               dogId: dogId,
             }
           }
-      ).then(response => {
+      ).then(() => {
         this.$emit('deleteDogEvent')
       }).catch(error => {
         console.log(error)
       })
     },
+
+
+    // deleteDog: function (dogId, status) {
+    //   this.$http.put("/dog", null, {
+    //         params: {
+    //           dogId: dogId,
+    //           status: status
+    //         }
+    //       }
+    //   ).then(response => {
+    //     this.$emit('deleteDogEvent')
+    //   }).catch(error => {
+    //     console.log(error)
+    //   })
+    // },
+
+
+
+
 
   },
 

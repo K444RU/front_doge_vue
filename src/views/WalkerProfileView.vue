@@ -23,7 +23,7 @@
       <h2> {{ userInfoResponse.firstname }} {{ userInfoResponse.lastname }}</h2>
       <div v-if="userInfoResponse.userPhoto !== null && userInfoResponse.userPhoto.length > 0">
         <h1>hello</h1>
-        <img :src="userInfoResponse.userPhoto" style="height: 300px">
+        <img class="circular--portrait" :src="userInfoResponse.userPhoto">
       </div>
       <div v-else>
         <img class="test" style="height: 250px" src="@/assets/img/deafult1.jpeg"/>

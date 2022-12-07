@@ -46,7 +46,7 @@
               {{ sizeType.sizeType }}
             </div></td>
             <td>
-              <font-awesome-icon style="height: 35px" icon="fa-solid fa-trash"/>
+              <font-awesome-icon v-on:click="deleteService(walker.walkingId)" style="height: 35px" icon="fa-solid fa-trash"/>
             </td>
           </tr>
           </tbody>
@@ -111,6 +111,20 @@ export default {
         value.sequenceNumber = counter
         counter++
       });
+    },
+
+
+    deleteService: function (walkingId) {
+      this.$http.delete("/some/path", {
+            params: {
+              walkingId: walkingId
+            }
+          }
+      ).then(response => {
+        this.$emit('deleteServiceEvent')
+      }).catch(error => {
+        console.log(error)
+      })
     },
 
 

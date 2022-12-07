@@ -11,9 +11,7 @@
 
     </nav>
     <router-view/>
-    <div class="col-20">
-      <img style="margin-right: 1201px" src="@/assets/img/doglogo.png" alt="">
-    </div>
+
     <h1>
       Lisa Koer
     </h1>
