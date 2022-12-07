@@ -115,13 +115,13 @@ export default {
 
 
     deleteService: function (walkingId) {
-      this.$http.delete("/some/path", {
+      this.$http.delete("/walking/delete", {
             params: {
               walkingId: walkingId
             }
           }
-      ).then(response => {
-        this.$emit('deleteServiceEvent')
+      ).then(() => {
+        this.$emit(this.getWalkerRegisteredServiceInfo())
       }).catch(error => {
         console.log(error)
       })

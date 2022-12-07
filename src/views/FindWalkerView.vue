@@ -66,11 +66,7 @@
                aria-label="Username" aria-describedby="basic-addon1">
       </div>
     </div>
-    <div class="col-lg-2">
-      <h3>Aadress</h3>
-      <input v-model="orderRequest.timeFrom" type="text" class="form-control" placeholder="kellaaeg"
-             aria-label="Username" aria-describedby="basic-addon1">
-    </div>
+
 
 
     <div class="col-lg-2">
