@@ -1,25 +1,13 @@
 <template>
   <div class="col row justify-content-center">
 
-    <div class="home"><img style="margin-right: 1201px" alt="Vue logo" src="@/assets/img/doglogo.png"> </div>
-    <nav class="col col-lg-7" >
+    <div class="logo"><img style="margin-right: 1201px" alt="Vue logo" src="@/assets/img/doglogo.png"> </div>
 
-      <router-link to="/walker-profile"><button type="button" class="btn btn-success">Minu Profiil</button></router-link>
-      <router-link to="/add/service"><button type="button" class="btn btn-dark">Lisa oma teenus</button></router-link>
-      <router-link to="/active/service"><button type="button" class="btn btn-success">Minu teenused</button></router-link>
-      <router-link to="/about"><button type="button" class="btn btn-dark">Kehtivad broneeringud</button></router-link>
-      <router-link to="/"><button type="button" class="btn btn-success">Logi välja</button></router-link>
-
-    </nav>
-    <router-view/>
-
-
-
-    <h1>Minu poolt avalikustatud teenused</h1>
-    <!--    <h1> {{walkerInfoResponse.firstname}} , siin on sinu aktiivsed teenused </h1>-->
-
+    <WalkerButtonComponent/>
 
     <div class="col-lg-8">
+      <h1>Minu poolt avalikustatud teenused</h1>
+
       <div class="">
         <table class="table table-success table-striped">
           <thead>
@@ -61,8 +49,12 @@
 </template>
 
 <script>
+
+import WalkerButtonComponent from "@/components/WalkerButtonComponent";
+
 export default {
   name: "WalkerActiveServicesRoute",
+  components: {WalkerButtonComponent},
 
   data: function () {
     return {

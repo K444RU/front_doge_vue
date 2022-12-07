@@ -1,43 +1,29 @@
 <template>
   <div class="col row justify-content-center">
 
-    <div class="home"><img style="margin-right: 1201px" alt="Vue logo" src="@/assets/img/doglogo.png"></div>
-    <nav class="col col-lg-7">
+    <div class="logo"><img style="margin-right: 1201px" alt="Vue logo" src="@/assets/img/doglogo.png"></div>
 
-      <router-link to="/owner-profile">
-        <button type="button" class="btn btn-success">Minu Profiil</button>
-      </router-link>
-      <router-link to="/find/dogwalker">
-        <button type="button" class="btn btn-dark">Otsi koerahoidjat</button>
-      </router-link>
-      <router-link to="/dog/register">
-        <button type="button" class="btn btn-success">Lisa koer</button>
-      </router-link>
-      <router-link to="/">
-        <button  type="button" class="btn btn-success">Logi välja</button>
-      </router-link>
+    <OwnerButtonComponent/>
 
-    </nav>
-    <router-view/>
-
-      <h1>Koera omaniku profiil {{ userId }} </h1>
+<div class="col-lg-5">
+  <h1>Koera omanik  {{ userInfoResponse.firstname }} {{ userInfoResponse.lastname }} </h1>
 
 
+  <div class="col-lg-5">
+    <div v-if="userInfoResponse.userPhoto !== null && userInfoResponse.userPhoto.length > 0">
 
-    <div class="col-lg-5">
-      <h2> {{ userInfoResponse.firstname }} {{ userInfoResponse.lastname }}</h2>
-      <div v-if="userInfoResponse.userPhoto !== null && userInfoResponse.userPhoto.length > 0">
-        <h1>hello</h1>
-        <img :src="userInfoResponse.userPhoto" style="height: 325px">
-      </div>
-      <div v-else>
-        <img class="test" style="height: 250px; " src="@/assets/img/deafult1.jpeg"/>
-      </div>
-
-
-      <ImageInput @pictureInputSuccess="setUserProfilePicture"/>
-      <button v-on:click="addUserPicture" type="button" class="btn btn-success col-lg-9">Salvesta pilt</button>
+      <img :src="userInfoResponse.userPhoto" style="height: 325px">
     </div>
+    <div v-else>
+      <img class="test" style="height: 250px; " src="@/assets/img/deafult1.jpeg"/>
+    </div>
+    <ImageInput @pictureInputSuccess="setUserProfilePicture"/>
+
+
+    <button v-on:click="addUserPicture" type="button" class="btn btn-success col-lg-9">Salvesta pilt</button>
+  </div>
+</div>
+
 
 
     <div class="col-lg-5">
@@ -56,11 +42,12 @@
 
 import ImageInput from "@/components/image/ImageInput";
 import DogTableComponent from "@/components/dog/DogTableComponent";
+import OwnerButtonComponent from "@/components/OwnerButtonComponent";
 
 
 export default {
   name: 'DogOwnerProfileView',
-  components: {DogTableComponent, ImageInput},
+  components: {OwnerButtonComponent, DogTableComponent, ImageInput},
 
 
   data: function () {
@@ -94,7 +81,8 @@ export default {
         dogBreed: '',
         dogAge: '',
         dogSizeType: '',
-        dogAdditionalInformation: ''
+        dogAdditionalInformation: '',
+        status: ''
       }
 
 
@@ -142,17 +130,6 @@ export default {
       });
     },
 
-    // getDogInfo: function () {
-    //
-    //   this.$http.get("/dog/select")
-    //       .then(response => {
-    //         this.dogTableResponse = response.data
-    //         this.addSequenceNumbers()
-    //       })
-    //       .catch(error => {
-    //         console.log(error)
-    //       })
-    // },
     getDogInfo: function () {
 
       this.$http.get("/dog/info", {
@@ -172,7 +149,6 @@ export default {
         console.log(error)
       })
     },
-
 
   },
   beforeMount() {

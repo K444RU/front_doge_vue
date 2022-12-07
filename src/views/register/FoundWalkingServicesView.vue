@@ -1,6 +1,6 @@
 <template>
 <div class="col row justify-content-center">
-  <div class="home">
+  <div class="logo">
     <img style="margin-right: 1201px" alt="Vue logo" src="@/assets/img/doglogo.png">
   </div>
 

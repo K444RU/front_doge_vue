@@ -1,38 +1,26 @@
 <template>
   <div class="col row justify-content-center">
 
-    <div class="home"><img style="margin-right: 1201px" alt="Vue logo" src="@/assets/img/doglogo.png"> </div>
-    <nav class="col col-lg-7" >
+    <div class="logo"><img style="margin-right: 1201px" alt="Vue logo" src="@/assets/img/doglogo.png"></div>
 
-      <router-link to="/walker-profile"><button type="button" class="btn btn-success">Minu Profiil</button></router-link>
-      <router-link to="/add/service"><button type="button" class="btn btn-dark">Lisa oma teenus</button></router-link>
-      <router-link to="/active/service"><button type="button" class="btn btn-success">Minu teenused</button></router-link>
-      <router-link to="/about"><button type="button" class="btn btn-dark">Kehtivad broneeringud</button></router-link>
-      <router-link to="/"><button type="button" class="btn btn-success">Logi välja</button></router-link>
-
-    </nav>
-    <router-view/>
+    <WalkerButtonComponent/>
 
 
+<div class="col-lg-5">
+  <h1 class="col-lg-3">Koerahoidja {{ userInfoResponse.firstname }} {{ userInfoResponse.lastname }} </h1>
 
-
-    <h1>Koerahoidja profiil {{ userId }} </h1>
-
-
-    <div class="col-lg-2">
-      <h2> {{ userInfoResponse.firstname }} {{ userInfoResponse.lastname }}</h2>
-      <div v-if="userInfoResponse.userPhoto !== null && userInfoResponse.userPhoto.length > 0">
-        <h1>hello</h1>
-        <img :src="userInfoResponse.userPhoto" style="height: 300px">
-      </div>
-      <div v-else>
-        <img class="test" style="height: 250px" src="@/assets/img/deafult1.jpeg"/>
-      </div>
-
-
-      <ImageInput @pictureInputSuccess="setUserProfilePicture"/>
-      <button v-on:click="addUserPicture" type="button" class="btn btn-success">Salvesta pilt</button>
+  <div class="col-lg-2">
+    <div v-if="userInfoResponse.userPhoto !== null && userInfoResponse.userPhoto.length > 0">
+      <img :src="userInfoResponse.userPhoto" style="height: 300px">
     </div>
+    <div v-else>
+      <img class="test" style="height: 250px" src="@/assets/img/deafult1.jpeg"/>
+    </div>
+    <ImageInput @pictureInputSuccess="setUserProfilePicture"/>
+    <button v-on:click="addUserPicture" type="button" class="btn btn-success eachButton">Salvesta pilt</button>
+  </div>
+</div>
+
 
 
     <div class="col-lg-4">
@@ -46,22 +34,18 @@
       <!--      <input v-model="date" type="date" name="" id="">-->
 
     </div>
-
-    <div class="col-lg-5">
-      <button v-on:click="$router.push('/add/service')" type="button" class="btn btn-dark">Lisa oma teenus</button>
-    </div>
   </div>
 </template>
 
 <script>
 
 import ImageInput from "@/components/image/ImageInput";
-
+import WalkerButtonComponent from "@/components/WalkerButtonComponent";
 
 
 export default {
   name: 'DogOwnerProfileView',
-  components: { ImageInput},
+  components: {WalkerButtonComponent, ImageInput},
 
 
   data: function () {
@@ -123,12 +107,18 @@ export default {
       })
     },
 
+    clearSessionStorage: function () {
+      this.$confirm("Are you sure?.").then(response => {
+        this.$router.push("/");
+      }).then(response => {
+        sessionStorage.clear();
 
+      })
+    },
   },
   beforeMount() {
     this.getUserRegisteredInfo()
   }
-
 }
 </script>
 

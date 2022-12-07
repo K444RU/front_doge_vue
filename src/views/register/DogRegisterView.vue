@@ -1,28 +1,17 @@
 <template>
   <div class="col row justify-content-center">
 
-    <div class="home"><img style="margin-right: 1201px" alt="Vue logo" src="@/assets/img/doglogo.png"> </div>
-    <nav class="col col-lg-7" >
+    <div class="logo"><img style="margin-right: 1201px" alt="Vue logo" src="@/assets/img/doglogo.png"> </div>
+    <OwnerButtonComponent/>
 
-      <router-link to="/owner-profile"><button type="button" class="btn btn-success">Minu Profiil</button></router-link>
-      <router-link to="/find/dogwalker"><button type="button" class="btn btn-dark">Otsi koerahoidjat</button></router-link>
-      <router-link to="/dog/register"><button type="button" class="btn btn-success">Lisa koer</button></router-link>
-      <router-link to="/"><button type="button" class="btn btn-success">Logi välja</button></router-link>
-
-    </nav>
-    <router-view/>
-    <div class="col-20">
-      <img style="margin-right: 1201px" src="@/assets/img/doglogo.png" alt="">
-    </div>
+<div class="textToRight">
     <h1>
       Lisa Koer
     </h1>
     <div class="row-cols-lg-8">
       <ImageInput @pictureInputSuccess="setPicture"/>
     </div>
-    <!--    <div class="row-cols-4">-->
-    <!--      <button v-on:click="addPicture" type="button" class="btn btn-success">Salvesta pilt</button>-->
-    <!--    </div>-->
+
     <div>
       <div v-if="dogRequest.dogPhoto === null">
         <img src="@/assets/img/deafult1.jpeg" alt="">
@@ -38,10 +27,8 @@
         <h4>
           Koera Tõug
         </h4>
-        <!--        <BreedsDropDown v-model="dogRequest.breedId"/>-->
-
-        <div style="margin-left: 300px" class="col-lg-6">
-          <select v-model="dogRequest.breedId" class="form-select" aria-label="Default select example">
+        <div style="margin-left: 330px" class="col-lg-6">
+          <select v-model="dogRequest.breedId" class="form-select"  aria-label="Default select example">
             <option selected disabled value="0">--Koera tõug--</option>
             <option v-for="breed in breeds" :value="breed.breedId">{{ breed.breedName }}</option>
           </select>
@@ -82,23 +69,25 @@
         </div>
       </div>
 
-      <div class="row col-lg-9">
+      <div class="row col-lg-8">
         <h4>
-          Lisainfo, mida koera hoidja peaks teadma
+          Lisainfo koera kohta
         </h4>
-        <div style="margin-left: 330px" class="col-lg-6">
-          <textarea v-model="dogRequest.dogAdditionalInformation" class="form-control"
+        <div style="margin-left: 330px" class="col-lg-7">
+          <textarea placeholder="Lisainfo" v-model="dogRequest.dogAdditionalInformation" class="form-control"
                     aria-label="With textarea"></textarea>
         </div>
         <br>
         <br>
-        <div class="row-cols-5">
+        <div style="margin-top: 30px; margin-left: 30px" class="row-cols-5">
           <button v-on:click="registerNewDog" type="button" class="btn btn-success">Registreeru</button>
         </div>
         <br>
         <br>
       </div>
     </div>
+</div>
+
     <div>
       <img src="@/assets/img/curious-dog.png" alt="">
     </div>
@@ -108,10 +97,11 @@
 
 <script>
 import ImageInput from "@/components/image/ImageInput";
+import OwnerButtonComponent from "@/components/OwnerButtonComponent";
 
 export default {
   name: 'DogRegisterView',
-  components: {ImageInput},
+  components: {OwnerButtonComponent, ImageInput},
 
   // components: {BreedsDropDown},
   data: function () {

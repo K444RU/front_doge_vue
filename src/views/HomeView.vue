@@ -1,7 +1,7 @@
 <template id="login-form">
   <div class>
-    <div class="home">
-      <img class="logo" alt="Vue logo" src="../assets/img/doglogo.png">
+    <div class="logo">
+      <img alt="Vue logo" src="../assets/img/doglogo.png">
     </div>
 
     <div class="row">
@@ -10,13 +10,13 @@
         <StarPageInfo/>
       </div>
 
-      <div class="col-3" >
+      <div style="margin-top: 40px" class="col-3" >
         <h3 style="color: #1DB954">Jätkamiseks Logige sisse</h3>
           <loginComponent/>
       </div>
       </div>
 
-    <div>
+    <div style="margin-left: 500px">
       <img src="@/assets/img/HOMEBACK.png">
     </div>
   </div>
