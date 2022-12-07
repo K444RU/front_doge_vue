@@ -23,8 +23,8 @@
       <tr v-for="dog in dogTableResponse">
         <th scope="row">{{ dog.sequenceNumber }}</th>
         <td>
-          <div v-if="dog.dogPhoto == null">
-            <img src="@/assets/img/deafult1.jpeg" style="height: 75px">
+          <div v-if="dog.dogPhoto == 0 || dog.dogPhoto == null">
+            <img src="@/assets/img/dogdeafultavatar.png" style="height: 75px">
           </div>
           <div v-else>
             <img :src="dog.dogPhoto" style="height: 75px" alt="">
