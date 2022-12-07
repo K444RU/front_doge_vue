@@ -1,34 +1,19 @@
 <template>
-  <div class="col row justify-content-center">
+  <div  class="col row justify-content-center">
 
-    <div class="home"><img style="margin-right: 1201px" alt="Vue logo" src="@/assets/img/doglogo.png"></div>
-    <nav class="col col-lg-7">
+    <div class="logo"><img style="margin-right: 1201px" alt="Vue logo" src="@/assets/img/doglogo.png"></div>
 
-      <router-link to="/owner-profile">
-        <button type="button" class="btn btn-success">Minu Profiil</button>
-      </router-link>
-      <router-link to="/find/dogwalker">
-        <button type="button" class="btn btn-dark">Otsi koerahoidjat</button>
-      </router-link>
-      <router-link to="/dog/register">
-        <button type="button" class="btn btn-success">Lisa koer</button>
-      </router-link>
-      <router-link to="/">
-        <button type="button" class="btn btn-success">Logi välja</button>
-      </router-link>
-
-    </nav>
-    <router-view/>
-
+    <OwnerButtonComponent/>
 
     <div>
-      <h1>Leidke ideaalne sobivus</h1>
+      <h1 style="margin-left: 30px">Leidke ideaalne sobivus</h1>
       <br>
       <br>
     </div>
 
 
-    <div style="margin-left: 10px" class="col-lg-2">
+
+    <div class="col-lg-2">
       <h3>Linn</h3>
       <select class="form-select" aria-label="Default select example">
         <option selected disabled value="0">--Valige Linn--</option>
@@ -42,7 +27,7 @@
       <h3>Kuupäev</h3>
       <p>
         <label class="fw-bold" for="date"></label>
-        <input v-model="orderRequest.timeFrom" type="date" id="date">
+        <input v-model="orderRequest.walkingDate" type="date" id="date">
       </p>
 
       <!--      <p>-->
@@ -57,18 +42,18 @@
 
       <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon1">Alates</span>
-        <input v-model="orderRequest.timeFrom" type="text" class="form-control" placeholder="kellaaeg"
+        <input v-model="orderRequest.timeFrom" type="text" class="form-control"
                aria-label="Username" aria-describedby="basic-addon1">
       </div>
       <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon1">Kuni</span>
-        <input v-model="orderRequest.timeTo" type="text" class="form-control" placeholder="kellaaeg"
+        <input v-model="orderRequest.timeTo" type="text" class="form-control"
                aria-label="Username" aria-describedby="basic-addon1">
       </div>
     </div>
     <div class="col-lg-2">
       <h3>Aadress</h3>
-      <input v-model="orderRequest.timeFrom" type="text" class="form-control" placeholder="kellaaeg"
+      <input v-model="orderRequest.address" type="text" class="form-control" placeholder="aadress"
              aria-label="Username" aria-describedby="basic-addon1">
     </div>
 
@@ -83,15 +68,14 @@
       </div>
 
 
-      <div class="col-lg-2">
-        <img src="../assets/img/labdog.png" style="height: 150px" alt=""></div>
-      </div>
+
+    </div>
 
 
+    <div class="col col-lg-1">
+      <font-awesome-icon v-on:click="addNewOrder" style="height: 75px;  color: #1DB954;" icon="fa-solid fa-circle-plus"/>
+      <div class="col-lg-2"><img src="../assets/img/labdog.png" style="height: 150px" alt=""></div>
 
-    <div class="col col-lg-2">
-      <!--      <button v-on:click="$router.push('/found/service')" type="button" class="btn btn-success">Otsi</button>-->
-      <font-awesome-icon v-on:click="addNewOrder" style="height: 100px; color: #1DB954;" icon="fa-solid fa-circle-plus"/>
     </div>
 
 
@@ -99,8 +83,11 @@
 </template>
 
 <script>
+
+import OwnerButtonComponent from "@/components/OwnerButtonComponent";
 export default {
   name: "FindDogWalkerPageView",
+  components: {OwnerButtonComponent},
 
   data: function () {
     return {

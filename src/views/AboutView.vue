@@ -1,13 +1,13 @@
 <template>
   <div class="col row justify-content-center">
-    <div class="home">
+    <div class="logo">
       <img v-on:click="$router.push('/')" style="margin-right: 1201px" alt="Vue logo" src="../assets/img/doglogo.png">
     </div>
 
 
-    <h1>This is an about page</h1>
+    <h1 style="margin-left: 400px; margin-bottom: 30px"> Meist</h1>
     <div class="col-lg-3">
-      <h2>stolb1</h2>
+
       <img style="height: 200px" class="dogwalkingpicturesize" src="@/assets/img/dogwalking.jpeg"/>
       <h5>
         Professional dog walkers, both individuals and businesses, are paid by dog owners to walk their dogs for them.
@@ -17,7 +17,7 @@
 
 
     <div class="col-lg-3">
-      <h2>stolb2</h2>
+
       <img style="height: 200px" src="@/assets/img/beaglewalking.jpeg"/>
       <h5>
         Research conducted by the University of Western Australia has suggested that a higher rate of dog walking
@@ -29,7 +29,7 @@
       </h5>
     </div>
     <div class="col-lg-3">
-      <h2>stolb2</h2>
+
       <img style="height: 200px" src="@/assets/img/westie.jpeg"/>
       <h5>
         Research conducted by the University of Western Australia has suggested that a higher rate of dog walking

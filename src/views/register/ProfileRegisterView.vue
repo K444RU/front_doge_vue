@@ -1,113 +1,120 @@
 <template>
   <form>
 
-    <div class="col-20">
+    <div class="logo">
       <img v-on:click="$router.push('/')" style="margin-right: 1201px" src="@/assets/img/doglogo.png">
     </div>
-
-    <div>
-      <h1>
-        Registreeru Annakäppa kasutajaks
-      </h1>
-    </div>
-    <div>
-      <div>
-        <h4 style="margin-right: 720px">
-          Nimi
-        </h4>
-        <div style="margin-left: 330px" class="col-lg-6">
-          <input v-model="userRequest.firstname" type="text" class="form-control" placeholder="nimi"
-                 aria-label="Username"
-                 aria-describedby="basic-addon1">
-        </div>
-      </div>
-      <div>
-        <h4 style="margin-right: 610px">
-          Perekonnanimi
-        </h4>
-        <div style="margin-left: 330px" class="col-lg-6">
-          <input v-model="userRequest.lastname" type="text" class="form-control" placeholder="perekonnanimi"
-                 aria-label="Username"
-                 aria-describedby="basic-addon1">
-        </div>
-      </div>
-      <div>
-        <h4 style="margin-right: 610px">
-          E-posti aadress
-        </h4>
-        <div style="margin-left: 330px" class="col-lg-6">
-          <input v-model="userRequest.email" type="text" class="form-control" placeholder="e-mail" aria-label="Username"
-                 aria-describedby="basic-addon1">
-        </div>
-      </div>
-      <div>
-        <h4 style="margin-right: 725px">
-          Linn
-        </h4>
-        <div style="margin-left: 330px" class="col-lg-6">
-          <input v-model="userRequest.city" type="text" class="form-control" placeholder="linn" aria-label="Username"
-                 aria-describedby="basic-addon1">
-        </div>
-      </div>
-      <div>
-        <h4 style="margin-right: 630px">Kasutajanimi
-        </h4>
-        <div style="margin-left: 330px" class="col-lg-6">
-          <input v-model="userRequest.username" type="text" class="form-control" placeholder="username"
-                 aria-label="Username"
-                 aria-describedby="basic-addon1">
-        </div>
-      </div>
+    <div class="textToRight">
 
       <div>
-        <h4 style="margin-right: 700px">
-          Parool
-        </h4>
-        <div style="margin-left: 330px" class="col-lg-6">
-          <input v-model="userRequest.password" type="password" class="form-control" placeholder="parool"
-                 aria-label="Username"
-                 aria-describedby="basic-addon1">
-        </div>
+        <h1>
+          Registreeru Annakäppa kasutajaks
+        </h1>
       </div>
       <div>
-        <h4 style="margin-right: 630px">
-          Korda parool
-        </h4>
-        <div style="margin-left: 330px" class="col-lg-6">
-          <input v-model="userRequest.passwordRepeat" type="password" class="form-control" placeholder="korda parool"
-                 aria-label="Username"
-                 aria-describedby="basic-addon1">
-        </div>
-        <div style="margin-left: 330px" class="col-lg-6">
+        <div>
+          <h4 style="margin-right: 720px">
+            Nimi
+          </h4>
+          <div style="margin-left: 330px" class="col-lg-6">
+            <input v-model="userRequest.firstname" type="text" class="form-control" placeholder="nimi"
+                   aria-label="Username"
+                   aria-describedby="basic-addon1">
+          </div>
         </div>
         <div>
-          <h4 style="margin-right: 350px">
-            Valige roll, mida soovite registreeruda
+          <h4 style="margin-right: 610px">
+            Perekonnanimi
           </h4>
-          <div class="col-6" style="margin-left: 330px">
-            <select v-model="userRequest.roleId" class="form-select" aria-label="Default select example">
-              <option selected disabled value="0">--Roll--</option>
-              <option v-for="chooseTheType in types" :value="chooseTheType.roleId">{{ chooseTheType.roleType }}</option>
-            </select>
+          <div style="margin-left: 330px" class="col-lg-6">
+            <input v-model="userRequest.lastname" type="text" class="form-control" placeholder="perekonnanimi"
+                   aria-label="Username"
+                   aria-describedby="basic-addon1">
           </div>
+        </div>
+        <div>
+          <h4 style="margin-right: 610px">
+            E-posti aadress
+          </h4>
+          <div style="margin-left: 330px" class="col-lg-6">
+            <input v-model="userRequest.email" type="text" class="form-control" placeholder="e-mail"
+                   aria-label="Username"
+                   aria-describedby="basic-addon1">
+          </div>
+        </div>
+        <div>
+          <h4 style="margin-right: 725px">
+            Linn
+          </h4>
+          <div style="margin-left: 330px" class="col-lg-6">
+            <input v-model="userRequest.city" type="text" class="form-control" placeholder="linn" aria-label="Username"
+                   aria-describedby="basic-addon1">
+          </div>
+        </div>
+        <div>
+          <h4 style="margin-right: 630px">Kasutajanimi
+          </h4>
+          <div style="margin-left: 330px" class="col-lg-6">
+            <input v-model="userRequest.username" type="text" class="form-control" placeholder="username"
+                   aria-label="Username"
+                   aria-describedby="basic-addon1">
+          </div>
+        </div>
+
+        <div>
+          <h4 style="margin-right: 700px">
+            Parool
+          </h4>
+          <div style="margin-left: 330px" class="col-lg-6">
+            <input v-model="userRequest.password" type="password" class="form-control" placeholder="parool"
+                   aria-label="Username"
+                   aria-describedby="basic-addon1">
+          </div>
+        </div>
+        <div>
+          <h4 style="margin-right: 630px">
+            Korda parool
+          </h4>
+          <div style="margin-left: 330px" class="col-lg-6">
+            <input v-model="userRequest.passwordRepeat" type="password" class="form-control" placeholder="korda parool"
+                   aria-label="Username"
+                   aria-describedby="basic-addon1">
+          </div>
+          <div style="margin-left: 330px" class="col-lg-6">
+          </div>
+          <div>
+            <h4 style="margin-right: 350px">
+              Valige roll, mida soovite registreeruda
+            </h4>
+            <div class="col-6" style="margin-left: 330px">
+              <select v-model="userRequest.roleId" class="form-select" aria-label="Default select example">
+                <option selected disabled value="0">--Roll--</option>
+                <option v-for="chooseTheType in types" :value="chooseTheType.roleId">{{
+                    chooseTheType.roleType
+                  }}
+                </option>
+              </select>
+            </div>
+
+          </div>
+          <br>
 
         </div>
-        <br>
-
-      </div>
-      <div></div>
-      <div>
-        <h4 style="margin-right: 560px">
-          Lisainfo enda kohta
-        </h4>
-        <div style="margin-left: 330px" class="col-lg-6">
+        <div></div>
+        <div>
+          <h4 style="margin-right: 560px">
+            Lisainfo enda kohta
+          </h4>
+          <div style="margin-left: 330px" class="col-lg-6">
           <textarea v-model="userRequest.additionalInformation" class="form-control"
                     aria-label="With textarea"></textarea>
-        </div>
-        <br>
-        <br>
-        <div class="row-cols-5">
-          <button v-on:click="registerNewUser" type="button" class="btn btn-success">Registreeru</button>
+          </div>
+          <br>
+          <br>
+          <div class="row-cols-5">
+            <button v-on:click="registerNewUser" type="button" class="btn btn-success">Registreeru</button>
+          </div>
+
         </div>
         <br>
         <br>

@@ -8,7 +8,7 @@
         <input v-model="username" type="text" class="form-control" placeholder="Username" aria-label="Kasutajanimi"
                aria-describedby="basic-addon1">
       </div>
-      <div >
+      <div style="margin-top: 5px">
         <input v-model="password" type="password" class="form-control" placeholder="Password" aria-label="Parool"
                aria-describedby="basic-addon1">
       </div>
@@ -16,7 +16,7 @@
       <div class="row-cols-1">
         <button v-on:click="login" type="button" class="btn btn-success">Logi sisse</button>
       </div>
-      <div class="row-cols-1">
+      <div style="margin-top: 5px" class="row-cols-1">
         <button v-on:click="$router.push('/register')" type="button" class="btn btn-dark">Registreeru</button>
       </div>
     </div>
