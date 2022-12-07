@@ -20,8 +20,8 @@
     </nav>
     <router-view/>
 
+      <h1>Koera omaniku profiil {{ userId }} </h1>
 
-    <h1>Koera omaniku profiil {{ userId }} </h1>
 
 
     <div class="col-lg-5">
