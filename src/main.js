@@ -6,6 +6,11 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap/dist/js/bootstrap.js"
 
+// main.js
+import VueSimpleAlert from "vue-simple-alert";
+
+
+Vue.use(VueSimpleAlert);
 
 
 // font awesome stuff

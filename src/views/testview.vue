@@ -1,6 +1,19 @@
 <template>
-  <div class="MainFlex testView">
-    <div class="container d-flex col row justify-content-center ">
+
+  <div class="col row justify-content-center">
+
+    <div class="home"><img style="margin-right: 1201px" alt="Vue logo" src="@/assets/img/doglogo.png"> </div>
+    <nav class="col col-lg-7" >
+
+        <router-link to="/owner-profile"><button type="button" class="btn btn-success">Minu Profiil</button></router-link>
+        <router-link to="/find/dogwalker"><button type="button" class="btn btn-dark">Otsi koerahoidjat</button></router-link>
+        <router-link to="/dog/register"><button type="button" class="btn btn-success">Lisa koer</button></router-link>
+      <router-link to="/"><button v-on:click="askToLogOut" type="button" class="btn btn-success">Logi välja</button></router-link>
+
+    </nav>
+      <router-view/>
+
+
 
 
 
@@ -35,7 +48,7 @@
       </div>
 
     </div>
-  </div>
+
 </template>
 
 <script>
@@ -44,7 +57,12 @@ export default {
 
   data: function () {
     return {}
+  },
+  methods:{
+
   }
+
+
 }
 </script>
 

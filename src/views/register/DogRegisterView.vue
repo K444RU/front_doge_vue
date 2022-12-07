@@ -1,5 +1,16 @@
 <template>
-  <div class="row">
+  <div class="col row justify-content-center">
+
+    <div class="home"><img style="margin-right: 1201px" alt="Vue logo" src="@/assets/img/doglogo.png"> </div>
+    <nav class="col col-lg-7" >
+
+      <router-link to="/owner-profile"><button type="button" class="btn btn-success">Minu Profiil</button></router-link>
+      <router-link to="/find/dogwalker"><button type="button" class="btn btn-dark">Otsi koerahoidjat</button></router-link>
+      <router-link to="/dog/register"><button type="button" class="btn btn-success">Lisa koer</button></router-link>
+      <router-link to="/"><button type="button" class="btn btn-success">Logi välja</button></router-link>
+
+    </nav>
+    <router-view/>
     <div class="col-20">
       <img style="margin-right: 1201px" src="@/assets/img/doglogo.png" alt="">
     </div>
@@ -186,7 +197,8 @@ export default {
       } else {
         this.dogRequest.dogAge = Number(this.dogRequest.dogAge)
 
-        this.$http.post("/dog/registration", this.dogRequest
+        this.$http.post("/dog/registration", this.dogRequest,
+        this.$alert("Koer on registreeritud")
         ).then(() => {
           this.$router.push({
             name: 'DogOwnerProfileView'

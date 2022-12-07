@@ -2,7 +2,7 @@
   <form>
 
     <div class="col-20">
-      <img style="margin-right: 1201px" src="@/assets/img/doglogo.png">
+      <img v-on:click="$router.push('/')" style="margin-right: 1201px" src="@/assets/img/doglogo.png">
     </div>
 
     <div>

@@ -1,10 +1,10 @@
 <template>
   <div id="app">
 
-  <nav class="col-3">
-    <router-link to="/"><button type="button" class="btn btn-success">HOME</button></router-link> |
-    <router-link to="/about"><button type="button" class="btn btn-success">ABOUT</button></router-link>
-  </nav>
+<!--  <nav class="col-3">-->
+<!--    <router-link to="/"><button type="button" class="btn btn-success">HOME</button></router-link> |-->
+<!--    <router-link to="/about"><button type="button" class="btn btn-success">ABOUT</button></router-link>-->
+<!--  </nav>-->
   <router-view/>
 
 
@@ -16,7 +16,7 @@
 
 
 nav {
-  padding: 40px;
+  padding: 7px;
 }
 
 nav a {

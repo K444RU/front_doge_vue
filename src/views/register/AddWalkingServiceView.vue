@@ -1,8 +1,17 @@
 <template>
   <div class="col row justify-content-center">
-    <div class="home">
-      <img style="margin-right: 1201px" alt="Vue logo" src="@/assets/img/doglogo.png">
-    </div>
+
+    <div class="home"><img style="margin-right: 1201px" alt="Vue logo" src="@/assets/img/doglogo.png"> </div>
+    <nav class="col col-lg-7" >
+
+      <router-link to="/walker-profile"><button type="button" class="btn btn-success">Minu Profiil</button></router-link>
+      <router-link to="/add/service"><button type="button" class="btn btn-dark">Lisa oma teenus</button></router-link>
+      <router-link to="/active/service"><button type="button" class="btn btn-success">Minu teenused</button></router-link>
+      <router-link to="/about"><button type="button" class="btn btn-dark">Kehtivad broneeringud</button></router-link>
+      <router-link to="/"><button type="button" class="btn btn-success">Logi välja</button></router-link>
+
+    </nav>
+    <router-view/>
 
 
     <div>
@@ -71,11 +80,12 @@
     </div>
 
 
-    <div class="row-cols-4">
+    <div class="col col-lg-1">
       <br>
       <br>
       <!--      <button v-on:click="$router.push('/active/service')" type="button" class="btn btn-success">Lisa teenus</button>-->
-      <button v-on:click="addNewService" type="button" class="btn btn-success">Lisa uus teenus</button>
+<!--      <button v-on:click="addNewService" type="button" class="btn btn-success">Lisa uus teenus</button>-->
+      <font-awesome-icon v-on:click="addNewService" style="height: 75px; color: #1DB954" icon="fa-solid fa-circle-plus" />
     </div>
 
 
