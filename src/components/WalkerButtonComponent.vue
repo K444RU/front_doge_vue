@@ -10,10 +10,10 @@
       <router-link to="/active/service">
         <button type="button" class="btn btn-success eachButton">Minu teenused</button>
       </router-link>
-      <router-link to="/about">
-        <button type="button" class="btn btn-dark eachButton">Kehtivad broneeringud</button>
-      </router-link>
-      <button v-on:click="clearSessionStorage" type="button" class="btn btn-success eachButton">Logi välja</button>
+<!--      <router-link to="/about">-->
+<!--        <button type="button" class="btn btn-dark eachButton">Kehtivad broneeringud</button>-->
+<!--      </router-link>-->
+      <button v-on:click="clearSessionStorage" type="button" class="btn btn-dark eachButton">Logi välja</button>
 
     </nav>
     <router-view/>

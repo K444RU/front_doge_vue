@@ -1,40 +1,34 @@
 <template>
   <div class="col row justify-content-center ownerProfileBackground ">
-
-    <div class="logo"><img style="margin-right: 1201px" alt="Vue logo" src="@/assets/img/doglogo.png"></div>
-
+    <div class="logo"><img alt="Vue logo" src="@/assets/img/doglogo.png"></div>
     <OwnerButtonComponent/>
 
-<div style="margin-top: 30px; color: floralwhite; font-style: oblique" class="col-lg-6">
-  <h1>Koera omanik   </h1>
-  <h1>{{ userInfoResponse.firstname }} {{ userInfoResponse.lastname }}</h1>
+    <div class="container">
+      <div class="row">
 
+        <div class="col-4" style="margin-top: 30px; color: black; font-style: oblique">
+          <h1>Koera omanik </h1>
+          <h1>{{ userInfoResponse.firstname }} {{ userInfoResponse.lastname }}</h1>
+          <div class="col-lg-5">
+            <div v-if="userInfoResponse.userPhoto !== null && userInfoResponse.userPhoto.length > 0">
+              <img class="circular--portrait img" :src="userInfoResponse.userPhoto" style="height: 325px">
+            </div>
+            <div v-else>
+              <img class="test" style="height: 250px; " src="@/assets/img/deafult1.jpeg"/>
+            </div>
+            <ImageInput @pictureInputSuccess="setUserProfilePicture"/>
+            <button v-on:click="addUserPicture" type="button" class="btn btn-success col-lg-9">Salvesta pilt</button>
+          </div>
+        </div>
 
-  <div class="col-lg-5">
-    <div v-if="userInfoResponse.userPhoto !== null && userInfoResponse.userPhoto.length > 0">
+        <div class="col">
+          <h5>
+            {{ userInfoResponse.additionalInformation }}
+          </h5>
+        </div>
 
-      <img class="circular--portrait img" :src="userInfoResponse.userPhoto" style="height: 325px">
-    </div>
-    <div v-else>
-      <img class="test" style="height: 250px; " src="@/assets/img/deafult1.jpeg"/>
-    </div>
-    <ImageInput @pictureInputSuccess="setUserProfilePicture"/>
-
-
-    <button v-on:click="addUserPicture" type="button" class="btn btn-success col-lg-9">Salvesta pilt</button>
-  </div>
-</div>
-
-
-
-    <div class="col-lg-5">
-
-      <h5>
-        {{ userInfoResponse.additionalInformation }}
-      </h5>
-      <!--      <input v-model="date" type="date" name="" id="">-->
-      <br>
-      <DogTableComponent :dog-table-response="dogTableResponse" @deleteDogEvent="getDogInfo"/>
+        <DogTableComponent :dog-table-response="dogTableResponse" @deleteDogEvent="getDogInfo"/>
+      </div>
     </div>
 
   </div>
@@ -85,7 +79,9 @@ export default {
         dogSizeType: '',
         dogAdditionalInformation: '',
         status: ''
-      }
+      },
+
+
 
 
     }
@@ -100,6 +96,7 @@ export default {
             }
           }
       ).then(response => {
+
         this.userInfoResponse = response.data
 
       }).catch(error => {

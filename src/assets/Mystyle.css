@@ -1,8 +1,6 @@
 .MainFlex {
     text-align: center;
     min-height: 100vh;
-    display: flex;
-
 }
 
 .ownerPic {
@@ -73,55 +71,64 @@
     height: fit-content;
 }
 
-/*.ownerbackground {*/
-/*    background-image: url("https://www.cutoutpeople.com/media/cache/full_thumb/th/5c/88/92/5c8892b9c0154541810867.jpg");*/
-/*    background-repeat: no-repeat;*/
-/*    !*background-size: contain;*!*/
-/*    margin-bottom: 500px;*/
-/*}*/
-
-
 .walkerProfileBackground {
     background-image: url("https://www.bil-jac.com/media/4hdctnny/trainyourdogtowalkonaleash.jpg?anchor=center&mode=crop&width=1024&height=512");
-    background-repeat: no-repeat;
-    margin-top: 1500px;
-    background-position: bottom;
-    background-size:  cover;
-    padding-bottom: 30px;
-
+    overflow-x: hidden;
+    width: 100%;
+    background-size: cover;
 }
 
 .ownerProfileBackground {
-    /*background-image: url("https://www.guidedogsinsurance.org.au/GuideDogs/media/images/Dog-Insurance-Banner.jpg");*/
     background-image: url("https://happybreath.com/wp-content/uploads/2021/04/Dog-Owner-Happy-Breath.jpg");
-    background-repeat: no-repeat;
+    overflow-x: hidden;
+    width: 100%;
     background-size: cover;
-    background-position: bottom;
-    padding-bottom: 100px;
-
 }
 
 .findWalkerBackground{
     background-image: url("https://happybreath.com/wp-content/uploads/2021/04/Dog-Owner-Happy-Breath.jpg");
-    background-repeat: no-repeat;
+    overflow-x: hidden;
+    width: 100%;
     background-size: cover;
-    background-position: bottom;
-    padding-bottom: 350px;
 }
 
 .addWalkingServiceBackGround {
     background-image: url("https://www.bil-jac.com/media/4hdctnny/trainyourdogtowalkonaleash.jpg?anchor=center&mode=crop&width=1024&height=512");
+    min-height: 100%;
+    min-width: 1024px;
+    background-size: cover;
+
+    /* Set up proportionate scaling */
+    width: auto;
+    height: auto;
+
+    /* Set up positioning */
+    position: fixed;
+    top: 0;
+    left: 0;
     background-repeat: no-repeat;
-    margin-top: 1500px;
-    background-position: bottom;
-    background-size:  cover;
-    padding-bottom: 400px;
 }
 .activeWalkingServiceBackGround {
     background-image: url("https://www.bil-jac.com/media/4hdctnny/trainyourdogtowalkonaleash.jpg?anchor=center&mode=crop&width=1024&height=512");
-    background-repeat: no-repeat;
-    margin-top: 1500px;
-    background-position: bottom;
-    background-size:  cover;
-    padding-bottom: 350px;
+    overflow-x: hidden;
+    width: 100%;
+    background-size: cover;
+}
+
+
+/*.tableShadow{*/
+/*    box-shadow: 10px 10px 10px 10px black;*/
+/*}*/
+
+.dogRegisterBackground{
+    background-image: url("https://images.unsplash.com/photo-1632498301446-5f78baad40d0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZG9nJTIwb3duZXJ8ZW58MHx8MHx8&w=1000&q=80");
+    overflow-x: hidden;
+    width: 100%;
+    background-size: cover;
+    /*background-repeat: no-repeat;*/
+    /*background-size: cover;*/
+    /*width: auto;*/
+    /*height: auto;*/
+    /*position: fixed;*/
+    /*background-position: top;*/
 }

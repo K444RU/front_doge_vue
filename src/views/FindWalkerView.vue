@@ -6,20 +6,20 @@
     <OwnerButtonComponent/>
 
     <div>
-      <h1 style="margin-left: 30px; color: floralwhite; font-style: oblique">Leidke ideaalne sobivus</h1>
+      <h1 style="margin-left: 30px; color: black; font-style: oblique">Leidke ideaalne sobivus</h1>
       <br>
       <br>
     </div>
 
 
-    <div class="col-lg-2">
+    <div class="col-lg-2 ">
       <h3>Linn</h3>
       <select v-model="walkerSearchRequest.cityId" class="form-select" aria-label="Default select example">
         <option selected disabled value="0">--Valige Linn--</option>
         <option v-for="city in cities" :value="city.cityId">{{ city.cityName }}</option>
-
       </select>
     </div>
+    <br>
 
 
     <div class="col-lg-2">
@@ -28,27 +28,9 @@
         <label class="fw-bold" for="date"></label>
         <input v-model="walkerSearchRequest.date" type="date" id="date">
       </p>
-
-      <!--      <p>-->
-      <!--        <label class="fw-bold" for="date">Kuni</label>-->
-      <!--        <input v-model="orderRequest.timeTo" type="date" id="date">-->
-      <!--      </p>-->
     </div>
-    <div class="col-lg-2">
-      <h3 style="color: floralwhite">Aadress</h3>
-
-      <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">Aadres</span>
-        <input v-model="walkerSearchRequest.aadress" type="text" class="form-control" placeholder="Aadress"
-               aria-label="Username" aria-describedby="basic-addon1">
-      </div>
-
-    </div>
-
-
     <div style="color: floralwhite" class="col-lg-2">
       <h3>Kellaaeg</h3>
-
       <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon1">Alates</span>
         <input v-model="walkerSearchRequest.timeFrom" type="number" class="form-control"
@@ -61,9 +43,17 @@
       </div>
     </div>
 
+    <div class="col-lg-2">
+      <h3 style="color: floralwhite">Aadress</h3>
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Aadres</span>
+        <input v-model="walkerSearchRequest.aadress" type="text" class="form-control" placeholder="Aadress"
+               aria-label="Username" aria-describedby="basic-addon1">
+      </div>
+    </div>
 
     <div class="col-lg-2">
-      <h3>Vali koera</h3>
+      <h3 style="color: floralwhite">Vali koera</h3>
       <div v-for="dog in walkerSearchRequest.dogInfos">
         <input v-model="dog.isSelected" class="form-check-input" type="checkbox" id="flexCheckDefault">
         <label style="color: floralwhite" class="form-check-label" for="flexCheckDefault">
@@ -76,14 +66,9 @@
 
 
     <div class="col col-lg-1">
-      <font-awesome-icon  v-on:click="findWallkers" style="height: 75px;  color: floralwhite;"
-                         icon="fa-solid fa-circle-plus"/>
-      <div class="col-lg-2"><img src="../assets/img/labdog.png" style="height: 150px" alt=""></div>
+      <font-awesome-icon   v-on:click="findWallkers" style="height: 75px;  color: floralwhite;" icon="fa-solid fa-circle-plus"/>
     </div>
-
     <h1 style="color: floralwhite; font-style: oblique">Koerte hoidjate nimekiri</h1>
-
-
     <div class="col-lg-8">
       <DogWalkersTable :available-walkings="availableWalkings" @registerWalkEvent="registerWalk"/>
     </div>

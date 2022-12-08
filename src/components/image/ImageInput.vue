@@ -1,6 +1,7 @@
 <template>
-  <div>
-    <input class="col-lg-9" type="file" @change="handleImage" accept="image/x-png,image/jpeg">
+  <div class="custom-file">
+    <input class="custom-file-input" type="file" @change="handleImage" id="inputGroupFile01" accept="image/x-png,image/jpeg">
+<!--    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>-->
   </div>
 </template>
 <script>

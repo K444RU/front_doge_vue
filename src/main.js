@@ -9,7 +9,6 @@ import "bootstrap/dist/js/bootstrap.js"
 // main.js
 import VueSimpleAlert from "vue-simple-alert";
 
-
 Vue.use(VueSimpleAlert);
 
 

@@ -1,9 +1,10 @@
 <template>
-  <div>
+  <div class="col">
 
-    <h2 style="color: floralwhite; font-style: oblique">Minu Koerad
+    <h2 style="color: black; font-style: oblique">Minu Koerad
     </h2>
-    <table class="table table-success table-striped">
+
+    <table class="table table-success table-striped tableShadow">
       <thead>
       <tr>
         <th scope="col">#</th>
@@ -13,6 +14,7 @@
         <th scope="col">Age</th>
         <th scope="col">Size</th>
         <th scope="col">Additionalinfo</th>
+        <th scope="col">Actions</th>
         <td></td>
 
       </tr>
@@ -25,17 +27,26 @@
             <img src="@/assets/img/dogdeafultavatar.png" style="height: 75px" alt="">
           </div>
           <div v-else>
-            <img class="dog--circular--portrait" :src="dog.dogPhoto" alt="">
+            <img class="dog--circular--portrait"
+                 :src="dog.dogPhoto" alt="">
           </div>
 
         </td>
-        <td>{{ dog.dogName }}</td>
+        <td> {{ dog.dogName }}</td>
         <td>{{ dog.dogBreed }}</td>
         <td>{{ dog.dogAge }}</td>
         <td>{{ dog.dogSizeType }}</td>
         <td>{{ dog.dogAdditionalInformation }}</td>
+        <!--        <td>-->
+        <!--          <font-awesome-icon v-on:click="deleteDog(dog.dogId)" style="height: 35px" icon="fa-solid fa-trash"/>-->
+        <!--        </td>-->
         <td>
-          <font-awesome-icon v-on:click="deleteDog(dog.dogId)" style="height: 35px" icon="fa-solid fa-trash"/>
+          <button v-on:click="dogWalkerInfo(dog.dogId)" type="button" class="btn btn-primary">
+            <font-awesome-icon icon="fa-solid fa-eye"/>
+          </button>
+          <button v-on:click="deleteDog" type="button" class="btn btn-danger">
+            <font-awesome-icon icon="fa-solid fa-trash-can"/>
+          </button>
         </td>
       </tr>
       </tbody>
@@ -51,15 +62,52 @@ export default {
   name: 'DogTableComponent',
   components: {ImageInput},
   props: {
-    dogTableResponse: Array(),
-
+    dogTableResponse: {}
   },
 
 
   data: function () {
-    return {}
+    return {
+      dogWalkerInfoResponse: [
+        {
+          dogId: 0,
+          dogName: '',
+          orders: [
+            {
+              orderId: 0,
+              walkerFirstname: '',
+              walkerLastname: '',
+              walkerAdditionalInformation: '',
+              walkerPhoto: '',
+              walkingDate: '',
+              timeFrom: 0,
+              timeTo: 0,
+              cityName: '',
+              address: '',
+              orderStatus: true
+            }
+          ]
+        }
+      ]
+    }
   },
   methods: {
+
+    dogWalkerInfo: function (dogId) {
+      this.$http.get("/dog/ordered", {
+            params: {
+              dogId: dogId
+            }
+          }
+      ).then(response => {
+        this.dogWalkerInfoResponse = response.data
+        this.$router.push('/dogwalker/info')
+      }).catch(error => {
+        console.log(error)
+      })
+    },
+
+
     deleteDog: function (dogId) {
       this.$http.put('/dog/update', {
             dogId: dogId,
@@ -76,3 +124,12 @@ export default {
 
 }
 </script>
+
+<style>
+/*table {*/
+/*  overflow-y:scroll;*/
+/*  height:500px;*/
+/*  display:block;*/
+/*}*/
+
+</style>

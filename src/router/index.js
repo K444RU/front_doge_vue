@@ -12,6 +12,7 @@ import FindDogWalkerPageView from "@/views/FindWalkerView";
 import AddWalkingServiceView from "@/views/register/AddWalkingServiceView";
 import WalkerActiveServicesView from "@/views/register/WalkerActiveServicesView";
 import FoundWalkingServicesView from "@/views/register/FoundWalkingServicesView";
+import DogWalkerInformationView from "@/views/register/DogWalkerInformationView";
 
 
 Vue.use(VueRouter)
@@ -21,6 +22,12 @@ const routes = [
         path: '/found/service',
         name: 'FoundWalkingServicesRoute',
         component: FoundWalkingServicesView
+
+    },
+    {
+        path: '/dogwalker/information',
+        name: 'DogWalkerInformationRoute',
+        component: DogWalkerInformationView
 
     },
     {

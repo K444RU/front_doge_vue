@@ -1,5 +1,5 @@
 <template>
-  <div class="col row justify-content-center">
+  <div class="col row justify-content-center dogRegisterBackground">
 
     <div class="logo"><img style="margin-right: 1201px" alt="Vue logo" src="@/assets/img/doglogo.png"> </div>
     <OwnerButtonComponent/>
@@ -80,7 +80,7 @@
         <br>
         <br>
         <div style="margin-top: 30px; margin-left: 30px" class="row-cols-5">
-          <button v-on:click="registerNewDog" type="button" class="btn btn-success">Registreeru</button>
+          <button v-on:click="registerNewDog" type="button" class="btn btn-success tableShadow">Registreeru</button>
         </div>
         <br>
         <br>

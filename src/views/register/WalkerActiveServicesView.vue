@@ -9,7 +9,7 @@
       <h1 style="color: floralwhite; font-style: oblique">Minu poolt avalikustatud teenused</h1>
 
       <div class="">
-        <table class="table table-success table-striped">
+        <table class="table table-success table-striped tableShadow">
           <thead>
           <tr>
             <th scope="col">#</th>
