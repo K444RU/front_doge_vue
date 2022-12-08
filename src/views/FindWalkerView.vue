@@ -1,12 +1,12 @@
 <template>
-  <div class="col row justify-content-center">
+  <div class="col row justify-content-center findWalkerBackground">
 
     <div class="logo"><img style="margin-right: 1201px" alt="Vue logo" src="@/assets/img/doglogo.png"></div>
 
     <OwnerButtonComponent/>
 
     <div>
-      <h1 style="margin-left: 30px">Leidke ideaalne sobivus</h1>
+      <h1 style="margin-left: 30px; color: floralwhite; font-style: oblique">Leidke ideaalne sobivus</h1>
       <br>
       <br>
     </div>
@@ -34,9 +34,19 @@
       <!--        <input v-model="orderRequest.timeTo" type="date" id="date">-->
       <!--      </p>-->
     </div>
-
-
     <div class="col-lg-2">
+      <h3 style="color: floralwhite">Aadress</h3>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Aadres</span>
+        <input v-model="walkerSearchRequest.aadress" type="text" class="form-control" placeholder="Aadress"
+               aria-label="Username" aria-describedby="basic-addon1">
+      </div>
+
+    </div>
+
+
+    <div style="color: floralwhite" class="col-lg-2">
       <h3>Kellaaeg</h3>
 
       <div class="input-group mb-3">
@@ -56,7 +66,7 @@
       <h3>Vali koera</h3>
       <div v-for="dog in walkerSearchRequest.dogInfos">
         <input v-model="dog.isSelected" class="form-check-input" type="checkbox" id="flexCheckDefault">
-        <label class="form-check-label" for="flexCheckDefault">
+        <label style="color: floralwhite" class="form-check-label" for="flexCheckDefault">
           {{ dog.dogName }}
         </label>
       </div>
@@ -66,12 +76,12 @@
 
 
     <div class="col col-lg-1">
-      <font-awesome-icon v-on:click="findWallkers" style="height: 75px;  color: #1DB954;"
+      <font-awesome-icon  v-on:click="findWallkers" style="height: 75px;  color: floralwhite;"
                          icon="fa-solid fa-circle-plus"/>
       <div class="col-lg-2"><img src="../assets/img/labdog.png" style="height: 150px" alt=""></div>
     </div>
 
-    <h1>Koerte hoidjate nimekiri</h1>
+    <h1 style="color: floralwhite; font-style: oblique">Koerte hoidjate nimekiri</h1>
 
 
     <div class="col-lg-8">
@@ -110,6 +120,7 @@ export default {
       walkerSearchRequest: {
         cityId: 0,
         date: '',
+        aadress: '',
         timeFrom: 0,
         timeTo: 0,
         dogInfos: [

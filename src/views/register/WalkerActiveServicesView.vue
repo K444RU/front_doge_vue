@@ -1,12 +1,12 @@
 <template>
-  <div class="col row justify-content-center">
+  <div class="col row justify-content-center activeWalkingServiceBackGround">
 
     <div class="logo"><img style="margin-right: 1201px" alt="Vue logo" src="@/assets/img/doglogo.png"> </div>
 
     <WalkerButtonComponent/>
 
-    <div class="col-lg-8">
-      <h1>Minu poolt avalikustatud teenused</h1>
+    <div class="col-lg-8" >
+      <h1 style="color: floralwhite; font-style: oblique">Minu poolt avalikustatud teenused</h1>
 
       <div class="">
         <table class="table table-success table-striped">
@@ -90,8 +90,6 @@ export default {
       ).then(response => {
         this.walkerTableInfoResponse = response.data
         this.addSequenceNumbers()
-
-
         console.log(response.data)
       }).catch(error => {
         console.log(error)

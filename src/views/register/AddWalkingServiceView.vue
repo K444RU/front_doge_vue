@@ -1,5 +1,5 @@
 <template>
-  <div class="col row justify-content-center">
+  <div class="col row justify-content-center addWalkingServiceBackGround">
 
     <div class="logo"><img style="margin-right: 1201px" alt="Vue logo" src="@/assets/img/doglogo.png"> </div>
 
@@ -7,14 +7,14 @@
 
 
     <div>
-      <h1>Leidke ideaalne sobivus</h1>
+      <h1  style="color: floralwhite; margin-left: 75px">Leidke ideaalne sobivus</h1>
       <br>
       <br>
     </div>
 
 
     <div class="col-lg-2">
-      <h3>Linn</h3>
+      <h3 style="color: floralwhite">Linn</h3>
       <select v-model="walkingRequest.cityId" class="form-select" aria-label="Default select example">
         <option selected disabled value="0">--Valige Linn--</option>
         <option v-for="city in cities" :value="city.cityId">{{ city.cityName }}</option>
@@ -24,13 +24,13 @@
 
 
     <div class="col-lg-2">
-      <h3>Kuupäev</h3>
+      <h3 style="color: floralwhite">Kuupäev</h3>
       <p>
-        <label class="fw-bold" for="date">Alates</label>
+        <label style="color: floralwhite" class="fw-bold" for="date">Alates</label>
         <input  v-model="walkingRequest.dateFrom" type="date" id="date">
       </p>
       <p>
-        <label class="fw-bold" for="date">Kuni</label>
+        <label style="color: floralwhite" class="fw-bold" for="date">Kuni</label>
         <input v-model="walkingRequest.dateTo" type="date" id="date">
       </p>
     </div>
@@ -39,7 +39,7 @@
     <div class="col-lg-2">
       <h3>Kellaaeg</h3>
       <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">Alates</span>
+        <span  class="input-group-text" id="basic-addon1">Alates</span>
         <input v-model="walkingRequest.timeFrom" type="number" class="form-control" placeholder="kellaaeg"
                aria-label="Username" aria-describedby="basic-addon1">
       </div>
@@ -77,8 +77,9 @@
       <br>
       <!--      <button v-on:click="$router.push('/active/service')" type="button" class="btn btn-success">Lisa teenus</button>-->
 <!--      <button v-on:click="addNewService" type="button" class="btn btn-success">Lisa uus teenus</button>-->
-      <font-awesome-icon v-on:click="addNewService" style="height: 75px; color: #1DB954" icon="fa-solid fa-circle-plus" />
+      <font-awesome-icon  v-on:click="addNewService" style="height: 75px; color: floralwhite" icon="fa-solid fa-circle-plus" />
     </div>
+
 
 
   </div>

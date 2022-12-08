@@ -1,7 +1,7 @@
 <template>
   <div>
 
-    <h2>Minu Koerad
+    <h2 style="color: floralwhite; font-style: oblique">Minu Koerad
     </h2>
     <table class="table table-success table-striped">
       <thead>

@@ -1,12 +1,13 @@
 <template>
-  <div class="col row justify-content-center">
+  <div class="col row justify-content-center ownerProfileBackground ">
 
     <div class="logo"><img style="margin-right: 1201px" alt="Vue logo" src="@/assets/img/doglogo.png"></div>
 
     <OwnerButtonComponent/>
 
-<div class="col-lg-5">
-  <h1>Koera omanik  {{ userInfoResponse.firstname }} {{ userInfoResponse.lastname }} </h1>
+<div style="margin-top: 30px; color: floralwhite; font-style: oblique" class="col-lg-6">
+  <h1>Koera omanik   </h1>
+  <h1>{{ userInfoResponse.firstname }} {{ userInfoResponse.lastname }}</h1>
 
 
   <div class="col-lg-5">
@@ -35,6 +36,7 @@
       <br>
       <DogTableComponent :dog-table-response="dogTableResponse" @deleteDogEvent="getDogInfo"/>
     </div>
+
   </div>
 </template>
 
