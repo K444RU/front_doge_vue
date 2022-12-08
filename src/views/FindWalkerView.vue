@@ -30,7 +30,7 @@
 
     <div style="margin-left: 10px" class="col-lg-2">
       <h3>Linn</h3>
-      <select class="form-select" aria-label="Default select example">
+      <select v-model="orderRequest.cityId" class="form-select" aria-label="Default select example">
         <option selected disabled value="0">--Valige Linn--</option>
         <option v-for="city in cities" :value="city.cityId">{{ city.cityName }}</option>
 
@@ -42,7 +42,7 @@
       <h3>Kuupäev</h3>
       <p>
         <label class="fw-bold" for="date"></label>
-        <input v-model="orderRequest.timeFrom" type="date" id="date">
+        <input v-model="orderRequest.walkingDate" type="date" id="date">
       </p>
 
       <!--      <p>-->
@@ -57,23 +57,22 @@
 
       <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon1">Alates</span>
-        <input v-model="orderRequest.timeFrom" type="text" class="form-control" placeholder="kellaaeg"
+        <input v-model="orderRequest.timeFrom" type="number" class="form-control" placeholder="kellaaeg"
                aria-label="Username" aria-describedby="basic-addon1">
       </div>
       <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon1">Kuni</span>
-        <input v-model="orderRequest.timeTo" type="text" class="form-control" placeholder="kellaaeg"
+        <input v-model="orderRequest.timeTo" type="number" class="form-control" placeholder="kellaaeg"
                aria-label="Username" aria-describedby="basic-addon1">
       </div>
     </div>
 
 
-
     <div class="col-lg-2">
       <h3>Vali koera</h3>
-      <div v-for="dog in dogRequest">
-        <input class="form-check-input" type="checkbox" id="flexCheckDefault">
-        <label v-model="dog.dogId" class="form-check-label" for="flexCheckDefault">
+      <div v-for="dog in orderRequest.dogs">
+        <input v-model="dog.isSelected" class="form-check-input" type="checkbox" id="flexCheckDefault">
+        <label class="form-check-label" for="flexCheckDefault">
           {{ dog.dogName }}
         </label>
       </div>
@@ -81,13 +80,13 @@
 
       <div class="col-lg-2">
         <img src="../assets/img/labdog.png" style="height: 150px" alt=""></div>
-      </div>
-
+    </div>
 
 
     <div class="col col-lg-2">
       <!--      <button v-on:click="$router.push('/found/service')" type="button" class="btn btn-success">Otsi</button>-->
-      <font-awesome-icon v-on:click="addNewOrder" style="height: 100px; color: #1DB954;" icon="fa-solid fa-circle-plus"/>
+      <font-awesome-icon  v-on:click="addNewOrder" style="height: 100px; color: #1DB954;"
+                         icon="fa-solid fa-circle-plus"/>
     </div>
 
 
@@ -109,36 +108,39 @@ export default {
             cityName: ''
           },
 
-      dogRequest: {
-        dogName: '',
-        dogId: 0
-      },
 
       orderRequest: {
-        walkingId: 0,
+        cityId: 0,
         walkingDate: '',
         timeFrom: 0,
         timeTo: 0,
-        address: '',
-        dog: [
+        dogs: [
           {
             dogId: 0,
+            dogName: '',
             isSelected: true
           }
         ]
-      }
+      },
 
+      orderResponse: {
+        walkingId: 0,
+        walkerName: '',
+        walkingDate: '',
+        timeFrom: 0,
+        timeTo: 0
+      }
 
     }
   },
   methods: {
 
     addNewOrder: function () {
-      this.$http.post("/walking/order", this.orderRequest
+      this.$http.post("/walking/active", this.orderRequest
       ).then(response => {
-        this.$router.push({
-          name: ('')
-        })
+        // console.log(response)
+        this.orderResponse = response.data
+        this.$router.push('/found/service')
       }).catch(error => {
         console.log(error)
       })
@@ -162,7 +164,7 @@ export default {
             }
           }
       ).then(response => {
-        this.dogRequest = response.data
+        this.orderRequest.dogs = response.data
       }).catch(error => {
         console.log(error)
       })

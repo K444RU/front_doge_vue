@@ -124,7 +124,7 @@ export default {
     },
 
     addUserPicture: function () {
-      this.userPhotoRequest.date = this.date
+      // this.userPhotoRequest.date = this.date
 
       this.userPhotoRequest.userId = this.userId
       this.$http.post("/user/photo", this.userPhotoRequest

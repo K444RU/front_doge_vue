@@ -19,23 +19,14 @@
       </tr>
       </thead>
       <tbody>
-      <tr>
+      <tr v-for="order in orderResponse">
         <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
+        <td>{{ order.walkerName }}</td>
+        <td>{{ order.walkingDate }}</td>
+        <td>{{ order.timeFrom }}</td>
+        <td>{{ order.timeTo }}</td>
       </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td colspan="2">Larry the Bird</td>
-        <td>@twitter</td>
-      </tr>
+
       </tbody>
     </table>
   </div>
@@ -52,7 +43,26 @@
 
 <script>
 export default {
-  name: "FoundWalkingServicesRoute"
+  name: "FoundWalkingServicesRoute",
+
+  data: function () {
+    return{
+
+      orderResponse: {
+        walkingId: 0,
+        walkerName: '',
+        walkingDate: '',
+        timeFrom: 0,
+        timeTo: 0
+      }
+
+
+    }
+
+  },
+  methods: {
+
+  }
 }
 </script>
 

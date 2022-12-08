@@ -121,7 +121,7 @@ export default {
             }
           }
       ).then(() => {
-        this.$emit(this.getWalkerRegisteredServiceInfo())
+        this.getWalkerRegisteredServiceInfo()
       }).catch(error => {
         console.log(error)
       })
