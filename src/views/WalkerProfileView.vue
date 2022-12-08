@@ -67,7 +67,8 @@
                 </div>
               </td>
               <td>
-                <button type="button" class="btn btn-dark">Jalutatud!</button>
+                <button v-on:click="orderStatusUpdate(order.orderId)" type="button" class="btn btn-dark">Jalutatud!
+                </button>
               </td>
             </tr>
             </tbody>
@@ -133,6 +134,18 @@ export default {
     }
   },
   methods: {
+    orderStatusUpdate: function (orderId) {
+      this.$http.put("/order/update", {
+            orderId: orderId,
+            orderStatus: "I"
+          }
+      ).then(response => {
+        this.$emit(this.getOrderRegisteredInfo())
+      }).catch(error => {
+        console.log(error)
+      })
+    },
+
 
     getOrderRegisteredInfo: function () {
       this.$http.get("/walking/order", {

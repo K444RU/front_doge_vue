@@ -66,42 +66,13 @@ export default {
   },
 
 
-  data: function () {
-    return {
-      dogWalkerInfoResponse: [
-        {
-          dogId: 0,
-          dogName: '',
-          orders: [
-            {
-              orderId: 0,
-              walkerFirstname: '',
-              walkerLastname: '',
-              walkerAdditionalInformation: '',
-              walkerPhoto: '',
-              walkingDate: '',
-              timeFrom: 0,
-              timeTo: 0,
-              cityName: '',
-              address: '',
-              orderStatus: true
-            }
-          ]
-        }
-      ]
-    }
-  },
   methods: {
-
     dogWalkerInfo: function (dogId) {
-      this.$http.get("/dog/ordered", {
-            params: {
-              dogId: dogId
-            }
-          }
-      ).then(response => {
-        this.dogWalkerInfoResponse = response.data
-        this.$router.push('/dogwalker/info')
+      this.$router.push({
+        name: "DogWalkerInformationRoute",
+        params: {
+          dogId: dogId
+        }
       }).catch(error => {
         console.log(error)
       })
@@ -119,9 +90,7 @@ export default {
         console.log(error)
       })
     },
-
   },
-
 }
 </script>
 

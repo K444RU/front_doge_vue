@@ -27,7 +27,8 @@ const routes = [
     {
         path: '/dogwalker/information',
         name: 'DogWalkerInformationRoute',
-        component: DogWalkerInformationView
+        component: DogWalkerInformationView,
+        props: true
 
     },
     {
