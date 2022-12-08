@@ -16,7 +16,7 @@
 
 
 nav {
-  padding: 7px;
+  padding: 1px;
 }
 
 nav a {

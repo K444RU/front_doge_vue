@@ -1,5 +1,5 @@
 <template id="login-form">
-  <div class>
+  <div>
     <div class="logo">
       <img alt="Vue logo" src="../assets/img/doglogo.png">
     </div>

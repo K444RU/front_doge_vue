@@ -44,3 +44,37 @@
 .loginMenu {
     margin-top: 100px;
 }
+
+.circular--portrait {
+    position: relative;
+    width: 350px;
+    height: 350px;
+    overflow: hidden;
+    border-radius: 80%;
+}
+
+.circular--portrait img {
+    width: 100%;
+    height: fit-content;
+}
+
+.dog--circular--portrait {
+    position: relative;
+    width: 75px;
+    height: 75px;
+    overflow: hidden;
+    border-radius: 80%;
+
+}
+
+.dog--circular--portrait img {
+    width: 100%;
+    height: fit-content;
+}
+
+/*.ownerbackground {*/
+/*    background-image: url("https://www.cutoutpeople.com/media/cache/full_thumb/th/5c/88/92/5c8892b9c0154541810867.jpg");*/
+/*    background-repeat: no-repeat;*/
+/*    !*background-size: contain;*!*/
+/*    margin-bottom: 500px;*/
+/*}*/

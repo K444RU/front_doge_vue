@@ -12,7 +12,7 @@
   <div class="col-lg-5">
     <div v-if="userInfoResponse.userPhoto !== null && userInfoResponse.userPhoto.length > 0">
 
-      <img :src="userInfoResponse.userPhoto" style="height: 325px">
+      <img class="circular--portrait img" :src="userInfoResponse.userPhoto" style="height: 325px">
     </div>
     <div v-else>
       <img class="test" style="height: 250px; " src="@/assets/img/deafult1.jpeg"/>

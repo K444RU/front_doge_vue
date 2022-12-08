@@ -1,5 +1,5 @@
 <template>
-  <div class="col row justify-content-center">
+  <div class="col row justify-content-center backgroundColor" >
 
     <div class="logo"><img style="margin-right: 1201px" alt="Vue logo" src="@/assets/img/doglogo.png"></div>
 
@@ -11,7 +11,7 @@
 
   <div class="col-lg-2">
     <div v-if="userInfoResponse.userPhoto !== null && userInfoResponse.userPhoto.length > 0">
-      <img :src="userInfoResponse.userPhoto" style="height: 300px">
+      <img class="circular--portrait img" :src="userInfoResponse.userPhoto" style="height: 300px">
     </div>
     <div v-else>
       <img class="test" style="height: 250px" src="@/assets/img/deafult1.jpeg"/>
