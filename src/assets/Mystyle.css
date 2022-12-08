@@ -4,6 +4,10 @@
     display: flex;
 
 }
+.ownerPic{
+    height: 100px;
+
+}
 
 .myApp{
     font-family: Avenir, Helvetica, Arial, sans-serif;

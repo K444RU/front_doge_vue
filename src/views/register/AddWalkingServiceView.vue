@@ -27,7 +27,7 @@
       <h3>Kuupäev</h3>
       <p>
         <label class="fw-bold" for="date">Alates</label>
-        <input v-model="walkingRequest.dateFrom" type="date" id="date">
+        <input  v-model="walkingRequest.dateFrom" type="date" id="date">
       </p>
       <p>
         <label class="fw-bold" for="date">Kuni</label>
@@ -40,12 +40,12 @@
       <h3>Kellaaeg</h3>
       <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon1">Alates</span>
-        <input v-model="walkingRequest.timeFrom" type="text" class="form-control" placeholder="kellaaeg"
+        <input v-model="walkingRequest.timeFrom" type="number" class="form-control" placeholder="kellaaeg"
                aria-label="Username" aria-describedby="basic-addon1">
       </div>
       <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon1">Kuni</span>
-        <input v-model="walkingRequest.timeTo" type="text" class="form-control" placeholder="kellaaeg"
+        <input v-model="walkingRequest.timeTo" type="number" class="form-control" placeholder="kellaaeg"
                aria-label="Username" aria-describedby="basic-addon1">
       </div>
 

@@ -1,5 +1,5 @@
 <template>
-  <div  class="col row justify-content-center">
+  <div class="col row justify-content-center">
 
     <div class="logo"><img style="margin-right: 1201px" alt="Vue logo" src="@/assets/img/doglogo.png"></div>
 
@@ -10,7 +10,6 @@
       <br>
       <br>
     </div>
-
 
 
     <div class="col-lg-2">
@@ -42,12 +41,12 @@
 
       <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon1">Alates</span>
-        <input v-model="walkerSearchRequest.timeFrom" type="text" class="form-control"
+        <input v-model="walkerSearchRequest.timeFrom" type="number" class="form-control"
                aria-label="Username" aria-describedby="basic-addon1">
       </div>
       <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon1">Kuni</span>
-        <input v-model="walkerSearchRequest.timeTo" type="text" class="form-control"
+        <input v-model="walkerSearchRequest.timeTo" type="number" class="form-control"
                aria-label="Username" aria-describedby="basic-addon1">
       </div>
     </div>
@@ -63,14 +62,20 @@
       </div>
 
 
-
     </div>
 
 
     <div class="col col-lg-1">
-      <font-awesome-icon v-on:click="findWallkers" style="height: 75px;  color: #1DB954;" icon="fa-solid fa-circle-plus"/>
+      <font-awesome-icon v-on:click="findWallkers" style="height: 75px;  color: #1DB954;"
+                         icon="fa-solid fa-circle-plus"/>
       <div class="col-lg-2"><img src="../assets/img/labdog.png" style="height: 150px" alt=""></div>
+    </div>
 
+    <h1>Koerte hoidjate nimekiri</h1>
+
+
+    <div class="col-lg-8">
+      <DogWalkersTable :available-walkings="availableWalkings" @registerWalkEvent="registerWalk"/>
     </div>
 
 
@@ -80,9 +85,11 @@
 <script>
 
 import OwnerButtonComponent from "@/components/OwnerButtonComponent";
+import DogWalkersTable from "@/views/DogWalkersTable";
+
 export default {
   name: "FindDogWalkerPageView",
-  components: {OwnerButtonComponent},
+  components: {DogWalkersTable, OwnerButtonComponent},
 
   data: function () {
     return {
@@ -112,7 +119,33 @@ export default {
             isSelected: false
           }
         ]
-      }
+      },
+      availableWalkings: [
+        {
+          walkingId: 0,
+          walkerName: '',
+          additionalInfo: '',
+          userPhoto: '',
+          date: '',
+          timeFrom: 0,
+          timeTo: 0
+        }
+      ],
+
+      orderRequest:
+          {
+            walkingId: 0,
+            walkingDate: '',
+            timeFrom: 0,
+            timeTo: 0,
+            address: '',
+            dogs: [
+              {
+                dogId: 0,
+                isSelected: true
+              }
+            ]
+          }
 
 
     }
@@ -122,9 +155,7 @@ export default {
     findWallkers: function () {
       this.$http.post("/walking", this.walkerSearchRequest
       ).then(response => {
-        // this.$router.push({
-        //   name: ('')
-        // })
+        this.availableWalkings = response.data
       }).catch(error => {
         console.log(error)
       })
@@ -148,7 +179,26 @@ export default {
             }
           }
       ).then(response => {
-        this. walkerSearchRequest.dogInfos = response.data
+        this.walkerSearchRequest.dogInfos = response.data
+      }).catch(error => {
+        console.log(error)
+      })
+    },
+
+    registerWalk: function (walkingId) {
+      this.orderRequest.walkingId = walkingId;
+      this.orderRequest.walkingDate = this.walkerSearchRequest.date;
+      this.orderRequest.timeFrom = this.walkerSearchRequest.timeFrom;
+      this.orderRequest.timeTo = this.walkerSearchRequest.timeTo;
+      this.orderRequest.dogs = this.walkerSearchRequest.dogInfos;
+      this.orderRequest.address = "Address from some input box"
+
+
+
+      this.$http.post("/walking/order", this.orderRequest
+      ).then(response => {
+        alert("Juhuuu! Success")
+        // push to some othet page
       }).catch(error => {
         console.log(error)
       })
@@ -157,6 +207,7 @@ export default {
 
   },
   beforeMount() {
+    this.availableWalkings = []
     this.citySelectInfo()
     this.getDogNameByUserId()
   }
